@@ -11,13 +11,13 @@ def media_3 (n1, n2, n3):
 #Quest 1C
 def diferenca_maior_media (n1, n2, n3):
     '''Função que calcula a diferença do maior número com a média de 3 números
-    float, float, float -> float'''
+    int, int, int-> float'''
     return (max (n1, n2, n3) - media_3(n1, n2, n3))
 
 #Quest 1D
 def soma_menor_media (n1, n2, n3):
     '''Função que calcula a soma do menor número com a média de 3 números
-    float, float, float -> float'''
+    int, int, int -> float'''
     return (min (n1, n2, n3) + media_3(n1, n2, n3))
 
 #Quest 2A
