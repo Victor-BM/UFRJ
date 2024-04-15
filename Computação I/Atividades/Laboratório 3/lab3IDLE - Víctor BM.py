@@ -38,15 +38,15 @@ def diferentes_funções (numero):
     '''Função que retorna uma diferente função matemática de acordo com o valor de entrada
     float -> string'''
     if numero < 0:
-        return 'y = 0'
+        return 0
     elif (numero >= 0) and (numero <= 2):
-        return 'y = x'
+        return x
     elif (numero > 2) and (numero <= 3.5):
-        return 'y = 2'
+        return 2
     elif (numero > 3.5) and (numero <= 5):
-        return 'y = 3'
+        return 3
     else:
-        return 'y = x² - 10x + 28'
+        return ((x**2) - (10*x) + 28))
 
 #Q6 - a
 def inss (salario_bruto):
