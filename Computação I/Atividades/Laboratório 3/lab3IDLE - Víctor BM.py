@@ -36,7 +36,7 @@ def data (dia, mes, ano):
 #Q5
 def diferentes_funções (numero):
     '''Função que retorna uma diferente função matemática de acordo com o valor de entrada
-    float -> string'''
+    float -> float'''
     if numero < 0:
         return 0
     elif (numero >= 0) and (numero <= 2):
