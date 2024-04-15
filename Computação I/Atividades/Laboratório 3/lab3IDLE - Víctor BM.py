@@ -30,7 +30,7 @@ def repetidor (texto, numero_repet):
 #Q4
 def data (dia, mes, ano):
     '''Função que retorna a data em dia/mes/ano
-    int, int, int -> string'''
+    int, int, in -> string'''
     return str(dia) + '/' + str(mes) + '/' + str(ano)
 
 #Q5
