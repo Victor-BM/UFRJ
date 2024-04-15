@@ -46,7 +46,7 @@ def diferentes_funções (numero):
     elif (numero > 3.5) and (numero <= 5):
         return 3
     else:
-        return ((x**2) - (10*x) + 28))
+        return ((x**2) - (10*x) + 28)
 
 #Q6 - a
 def inss (salario_bruto):
