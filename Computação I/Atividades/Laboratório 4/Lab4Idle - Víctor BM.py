@@ -45,12 +45,12 @@ def formato_data (data):
     string -> tuple'''
     dig0_1 = int(data[0:2])
     dig3_4 = int(data[3:5])
-    dig6_7 = int(data[6:8])
+    dig6_7 = int(data[6:])
     possiveis_formatos = ()
-    if (dig0_1 >= 1 and dig0_1 <= 31) and (dig3_4 >= 1 and dig3_4 <= 12) and (dig6_7 >= 0):
+    if (dig0_1 >= 1 and dig0_1 <= 31) and (dig3_4 >= 1 and dig3_4 <= 12) and (dig6_7 >= 0 and dig6_7 <= 99):
         possiveis_formatos = possiveis_formatos + ('dd/mm/yy',)
-    if(dig0_1 >= 1 and dig0_1 <= 12) and (dig3_4 >= 1 and dig3_4 <= 12) and (dig6_7 >= 0):
+    if(dig0_1 >= 1 and dig0_1 <= 12) and (dig3_4 >= 1 and dig3_4 <= 12) and (dig6_7 >= 0 and dig6_7 <= 99):
         possiveis_formatos = possiveis_formatos + ('mm/dd/yy',)
-    if(dig0_1 <= 12) and (dig3_4 >= 1 and dig3_4 <= 12) and (dig6_7 >= 1 and dig6_7 <= 12):
+    if(dig6_7 >= 0 and dig6_7 <= 99) and (dig3_4 >= 1 and dig3_4 <= 12) and (dig6_7 >= 1 and dig6_7 <= 31):
         possiveis_formatos = possiveis_formatos + ('yy/mm/dd',)
     return possiveis_formatos
