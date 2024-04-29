@@ -50,7 +50,7 @@ def formato_data (data):
     if (dig0_1 >= 1 and dig0_1 <= 31) and (dig3_4 >= 1 and dig3_4 <= 12) and (dig6_7 >= 0):
         possiveis_formatos = possiveis_formatos + ('dd/mm/yy',)
     if(dig0_1 >= 1 and dig0_1 <= 12) and (dig3_4 >= 1 and dig3_4 <= 12) and (dig6_7 >= 0):
-        possiveis_formatos = possiveis_formatos = possiveis_formatos + ('mm/dd/yy',)
+        possiveis_formatos = possiveis_formatos + ('mm/dd/yy',)
     if(dig0_1 <= 12) and (dig3_4 >= 1 and dig3_4 <= 12) and (dig6_7 >= 1 and dig6_7 <= 12):
         possiveis_formatos = possiveis_formatos + ('yy/mm/dd',)
     return possiveis_formatos
