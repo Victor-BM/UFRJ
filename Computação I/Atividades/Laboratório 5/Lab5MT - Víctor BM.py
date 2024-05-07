@@ -15,9 +15,11 @@ def pontos_por_time (jogos):
     de cada time. Exemplo:
     [['Cormengo','Flamínthians', [1, 0]], ['Flamínthians', 'Cormengo', [2, 2]]]
     list -> dict'''
-    pontos_fla = 0
-    pontos_cor = 0
-    times = {'Flamínthians' : pontos_fla, 'Cormengo' : pontos_cor}
+    pontos1 = 0
+    pontos2 = 0
+    time1 = jogos[0][0]
+    time2 = jogos[0][1]
+    times = {time1 : pontos1, time2 : pontos2}
     if jogos[0][2][0] > jogos[0][2][1]:
         times[jogos[0][0]] += 3
     elif jogos[0][2][0] < jogos[0][2][1]:
