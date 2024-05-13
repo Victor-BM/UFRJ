@@ -64,10 +64,10 @@ def maiores (lista_numero, n):
     return lista_numero[x+1::]
     
 #Q7
-def acima_da_media (notas):
+def acima_da_media (notas):def acima_da_media (notas):
     '''Função que retorna as notas que ficaram acima de média
     list -> list'''
     media = (sum(notas))/(len(notas))
-    list.append(notas, media)
-    list.sort(notas)
-    x = 
+    acima = list(filter(lambda x: x > media, notas))
+    list.sort(acima)
+    return acima
