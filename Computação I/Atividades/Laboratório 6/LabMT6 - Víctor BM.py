@@ -29,3 +29,45 @@ def retira_pontuacao(frase):
     frase = str.replace(frase, '?', ' ')
     return frase
 
+#Q4
+def inverte (frase):
+    '''Função que retorna a frase com as palavraas na ordem inversa, sem maiusculas e sem potnuação
+    str -> str'''
+    frase = str.lower(frase)
+    frase = str.replace(frase, '-', ' ')
+    frase = str.replace(frase, ',', ' ')
+    frase = str.replace(frase, ':', ' ')
+    frase = str.replace(frase, ';', ' ')
+    frase = str.replace(frase, '.', ' ')
+    frase = str.replace(frase, '!', ' ')
+    frase = str.replace(frase, '?', ' ')
+    palavras = str.split(frase)
+    palavras = palavras[::-1]
+    palavras = str.join(' ', palavras)
+    return palavras
+
+#Q5
+def insere(lista_numero, n):
+    '''Função que ordena uma lista em crescente de inteiros, insere n na posicao correta paa continuar em ordem
+    list -> list'''
+    list.append(lista_numero, n)
+    list.sort(lista_numero)
+    return lista_numero
+
+#Q6
+def maiores (lista_numero, n):
+    '''Função que retorna os numeros maiores que n em ordem crescente
+    list -> list'''
+    list.append(lista_numero, n)
+    list.sort(lista_numero)
+    x = list.index(lista_numero, n)
+    return lista_numero[x+1::]
+    
+#Q7
+def acima_da_media (notas):
+    '''Função que retorna as notas que ficaram acima de média
+    list -> list'''
+    media = (sum(notas))/(len(notas))
+    list.append(notas, media)
+    list.sort(notas)
+    x = 
