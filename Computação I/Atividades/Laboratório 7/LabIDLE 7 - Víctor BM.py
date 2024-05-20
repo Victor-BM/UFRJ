@@ -1,3 +1,4 @@
+#LabIdle 7 - Víctor BM
 import random
 
 #Q1
