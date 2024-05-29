@@ -57,7 +57,8 @@ def primo(numero):
         for i in range(2, (int(numero/2) + 1)):
             if numero%i == 0:
                 contador += 1
-        if contador != 0:
-            return False
+            if contador != 0:
+                return False
         else:
             return True
+
