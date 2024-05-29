@@ -62,3 +62,15 @@ def primo(numero):
         else:
             return True
 
+#Q6
+def soma_h (n):
+    '''Função que faz somatorio de 1/i até n
+    int -> float'''
+    soma = 0
+    if n == 0:
+        return soma
+    for i in range (1, n+1):
+        soma += (1/i)
+    soma = round (soma, 2)
+    return soma
+
