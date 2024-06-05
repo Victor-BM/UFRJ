@@ -13,7 +13,7 @@ def emails_update(contatos):
 #Q2
 def contaestrelas (aval):
     '''Função que retorna quantas estrelas
-    de cada tipo o motorista ganhou
+    de cada tipo o motorista ganhou em ordem crescente do 1 ao 5
     list -> list'''
     total_estrelas= [0, 0, 0, 0, 0]
     i = 0
@@ -33,7 +33,7 @@ def contaestrelas (aval):
 #Q3
 def contaestrelas_v2 (aval):
     '''Função que retorna quantas estrelas
-    de cada tipo o motorista ganhou
+    de cada tipo o motorista ganhou em ordem crescente do 1 ao 5
     list -> list'''
     total_estrelas= {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
     i = 0
