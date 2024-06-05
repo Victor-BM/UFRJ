@@ -23,7 +23,7 @@ def contaestrelas (aval):
         while j<=5:
             count = 0
             if aval[i] == j:
-                count = total[j-1]
+                count = total_estrelas[j-1]
                 count += 1
                 total_estrelas[j-1] = count
                 break
@@ -43,7 +43,7 @@ def contaestrelas_v2 (aval):
         while j<=5:
             count = 0
             if aval[i] == j:
-                count = total[j]
+                count = total_estrelas[j]
                 count += 1
                 total_estrelas[j] = count
                 break
