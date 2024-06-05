@@ -7,7 +7,7 @@ def emails_update(contatos):
     i = 0
     while i < len(contatos):
         email = contatos[i][2]
-        contatos[i][2] = [email]
+        contatos[i][2] = [email,]
         i += 1
 
 #Q2
