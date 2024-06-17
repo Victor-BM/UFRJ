@@ -1,5 +1,4 @@
 #Questão 1 - LabIdle 10 - Víctor BM
-import random
 def repetidos (valores):
     '''Função que conta a quantidade de séries
     repetidas em um dado
