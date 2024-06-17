@@ -1,6 +1,6 @@
 def main():
   while True:
-    a = list(eval(input('Dê uma lidta: ')))
+    a = list(eval(input('Para passar uma lista, dê cada entrada atribuída ao indíce separadas por vírgulas: ')))
     print (a)
 #se usuário passar: 'banana',
 #então fica ['banana']
