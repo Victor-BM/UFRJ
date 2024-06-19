@@ -3,7 +3,7 @@ def multiplica(a, b, c):
 
 def main():
     media = 0
-    lista1 = list(map(multiplica, (1, 2, 3), (4, 5, 6), (7, 8, 9)))
+    lista1 = list(map(multiplica, (1, 2, 3), (4, 5, 6), (7, 8, 9))) #map faz uma função ser executada para cada iteravel, quantidade de iteravel precisa ser igual ao numero de variaveis na função
     for i in lista1:
         media += i
     media = media/3
