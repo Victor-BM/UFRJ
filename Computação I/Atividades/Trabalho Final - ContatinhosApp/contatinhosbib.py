@@ -1,5 +1,5 @@
 #Trabalho Final - ContatinhosApp - Víctor BM
-contatos = []#colocar isso no arquivo de interfacd
+#contatos = []#colocar isso no arquivo de interfacd
 def criar_contato (nome, telefone = '', email = '', instagram = ''):
     '''Função que permite criar contatos com apenas o nome obrigatório
     str, str, str, str -> list'''
