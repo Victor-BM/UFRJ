@@ -1,13 +1,12 @@
 #Trabalho Final - ContatinhosApp - Víctor BM
-
+contatos = []#colocar isso no arquivo de interfacd
 def criar_contato (nome, telefone = '', email = '', instagram = ''):
     '''Função que permite criar contatos com apenas o nome obrigatório
     str, str, str, str -> list'''
-    contatos_todos = []
     telefones = [telefone,]
     contato1 = [nome, telefones, email, instagram]
-    list.append(contatos_todos, contato1)
-    return contatos_todos
+    list.append(contatos, contato1)
+    return contatos
 
 def atualizar_contato (contato, indice, nova_inf):
     '''Função que permite atualizar o contato adicionando uma nova informação pelo indice
@@ -58,7 +57,3 @@ def quem_ligou(ligacao):
             return element
     else:
         return []
-
-def main():
-    contatos = []
-    contatos += criar_contato(cucucucucuc)
