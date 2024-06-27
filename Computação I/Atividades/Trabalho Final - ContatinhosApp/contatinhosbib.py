@@ -68,4 +68,45 @@ def quem_ligou(ligacao):
             return contatos_geral[i]
     else:
         return []
-#todas funções testadas e funcionais até aq ------> mas talvez a atualizar contato tenha q ser modificada
+
+def excluir_contato(contatos, indice):
+    '''Função que exclui um contato por completo dado a lista de todos os
+    contatos e o indíce do contato a ser excluído
+    list, int -> none'''
+    if 0 <= indice <= (len(contatos_geral) - 1):
+        del contatos_geral[indice]
+
+def aglutinador (contatos, indice1, indice2):
+    '''Função que, dado dois contatos, algutina eles. No entanto, mantém as informações
+    do primeiro e adiciona caso haja algo novo do segundo
+    list, int, int -> none'''
+    if (0 <= indice1 <= (len(contatos_geral) - 1)) and (0 <= indice1 <= (len(contatos_geral) - 1)) and (indice1 != indice2):
+        if (type(contatos_geral[indice1][1]) is list) and (type(contatos_geral[indice2][1]) is list):
+            for i in range(len(contatos_geral[indice2][1])):
+                if contatos_geral[indice2][1][i] not in contatos_geral[indice1][1]:
+                    list.append(contatos_geral[indice1][1], contatos_geral[indice2][1][i])
+        elif (type(contatos_geral[indice1][1]) is list) and (contatos_geral[indice2][1] not in contatos_geral[indice1][1]):
+            list.append(contatos_geral[indice1][1], contatos_geral[indice2][1])
+        elif (type(contatos_geral[indice2][1]) is list):
+            contatos_geral[indice1][1] = [contatos_geral[indice1][1]]
+            if contatos_geral[indice1][1][0] not in contatos_geral[indice2][1]:
+                list.extend(contatos_geral[indice1][1], contatos_geral[indice2][1])
+            else:
+                contatos_geral[indice1][1] = contatos_geral[indice2][1]
+        elif not (type(contatos_geral[indice1][1]) is list) and not (type(contatos_geral[indice2][1]) is list):
+            contatos_geral[indice1][1] = [contatos_geral[indice1][1]]
+            if contatos_geral[indice1][1][0] != contatos_geral[indice2][1]:
+                list.append(contatos_geral[indice1][1], contatos_geral[indice2][1])
+        if contatos_geral[indice1][2] != contatos_geral[indice2][2]:
+            if contatos_geral[indice2][2] != '':
+                contatos_geral[indice1][2] = [contatos_geral[indice1][2]]
+                list.append(contatos_geral[indice1][2], contatos_geral[indice2][2])
+            if contatos_geral[indice1][2][0] == '':
+                del contatos_geral[indice1][2][0]
+        if (contatos_geral[indice1][3] != contatos_geral[indice2][3]):
+            if contatos_geral[indice2][3] != '':
+                contatos_geral[indice1][3] = [contatos_geral[indice1][3]]
+                list.append(contatos_geral[indice1][3], contatos_geral[indice2][3])
+            if contatos_geral[indice1][3][0] == '':
+                del contatos_geral[indice1][3][0]
+        del contatos_geral[indice2]
