@@ -2,13 +2,8 @@
 import contatinhosbib as cbib
 contatos = []
 
-
-
-
-
-
 def teste():
-    contatos = [['João Fields', ['11', '13'], 'aa', 'insta'], ['Ana Fieldson', '23', '', '']]
+    contatos = [['João Fields', ['11', '13'], '', ''], ['Ana Fieldson', ['111', '12', '11'], '', '']]
     cbib.contatos_geral = contatos
     ind = 0
     print(cbib.buscar_contato(contatos, 'Fields'))
@@ -19,5 +14,9 @@ def teste():
     print(contatos)
     print(cbib.quem_ligou('37'))
     cbib.criar_contato('Joana', '32323')
+    print(contatos)
+    #cbib.excluir_contato(contatos, 2)
+    #print(contatos)
+    cbib.aglutinador(contatos, 0, 1)
     print(contatos)
 teste()
