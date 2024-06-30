@@ -12,28 +12,34 @@ def atualizar_contato (contato, indice, nova_inf):
     0 -> nome; 1 -> telefones; 2 -> email, 3 -> instagram
     list, int, str -> bool'''
     ind = list.index(contatos_geral, contato)
-    if (indice == 0 or indice == 2 or indice == 3) and (nova_inf != ''):
+    if (type(contato[indice]) is str) and (nova_inf != ''):
         contato[indice] = nova_inf
         list.insert(contatos_geral, ind, contato)
         del contatos_geral[ind+1]
         return True
-    elif indice == 1 and  (nova_inf not in contato[1]) and (nova_inf != ''):
-        list.append(contato[1], nova_inf)
-        if '' in contato[1]:
-            del contato[1][0]
+    elif (type(contato[indice]) is list) and  (nova_inf not in contato[indice]) and (nova_inf != ''):
+        if '' in contato[indice]:
+            del contato[indice][0]
+        list.append(contato[indice], nova_inf)
         list.insert(contatos_geral, ind, contato)
         del contatos_geral[ind+1]
         return True
+    elif (type(contato[indice]) is list) and  (nova_inf not in contato[indice]) and (nova_inf == ''):
+        print('tenho q arrumar ainda')
     else:
         return False
     
 def excluir_telefone (contato, telefone):
-    '''Função que permite excluir o telefone do contato
+    '''Função que permite excluir o telefone (ou qualquer múltipla informação) do contato
     list, string -> bool'''
     indice = list.index(contatos_geral, contato)
-    if type(contatos_geral[indice][1]) is list:
-        if telefone in contatos_geral[indice][1]:
-            list.remove(contatos_geral[indice][1], telefone)
+    ind = 1
+    for i in contato:
+        if telefone in i:
+            ind = list.index(contato, i)#para múltiplas informações, ou seja, quando aglutina
+    if type(contatos_geral[indice][ind]) is list:
+        if telefone in contatos_geral[indice][ind]:
+            list.remove(contatos_geral[indice][ind], telefone)
             return True
     return False
 
@@ -76,8 +82,11 @@ def aglutinador (contatos, indice1, indice2):
     do primeiro e adiciona caso haja algo novo do segundo
     list, int, int -> none'''
     if (0 <= indice1 <= (len(contatos_geral) - 1)) and (0 <= indice2 <= (len(contatos_geral) - 1)) and (indice1 != indice2):
-        if contatos_geral[indice1][1][0] == '':
-            del contatos_geral[indice1][1][0]
+        for g in [indice1, indice2]:
+            if contatos_geral[g][1][0] == '':
+                del contatos_geral[g][1][0]
+        if not contatos_geral[indice1][1]:#para o caso de aglutinar dois contatos com números vazios
+            list.append(contatos_geral[indice1][1], '')
         for i in range(len(contatos_geral[indice2][1])):
             if (contatos_geral[indice2][1][i] not in contatos_geral[indice1][1]):
                 list.append(contatos_geral[indice1][1], contatos_geral[indice2][1][i])
