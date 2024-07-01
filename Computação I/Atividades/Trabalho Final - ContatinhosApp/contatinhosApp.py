@@ -1,4 +1,4 @@
-#Trabalho Final - ContatinhosApp - Parte 2 - Víctor BM
+Trabalho Final - ContatinhosApp - Parte 2 - Víctor BM
 import os
 import time
 import contatinhosbib as cbib
@@ -21,7 +21,7 @@ def criar_contato():
             insta_criar = input('Informe o instagram do seu primeiro contato: ')
             os.system('cls')
             break
-    return cbib.criar_contato(nome_criar, telefone_criar, email_criar, insta_criar)
+    return cbib.criar_contato(nome_criar, telefone_criar, email_criar, insta_criar)    
 
 def main():
     print('--- Contatinhos App ---\n')
@@ -36,6 +36,7 @@ def main():
             print('3 -> Atualizar Contato\n4 -> Quem te ligou?\n5 -> Excluir contato\n6 -> Aglutinar 2 contatos\n7 -> Sair\n')
             resposta = int(input('Qual funcionalidade você quer utilizar? '))
             if 0 <= resposta <= 8:
+                print('\n\n\n')
                 break
             else:
                 print('Funcionalidade inválida, tente novamente')
@@ -50,17 +51,42 @@ def main():
             print('Você selecionou a funcionalidade de criar contato')
             list. append(contatos, criar_contato())
         elif resposta == 2:
-            print('buscar contato')#implementar ainda
-        elif resposta == 3: #verificar se ta correto ainda
             os.system('cls')
+            print('Você selecionou a funcionalidade de buscar contato')
+            nome = input('Qual a informação que você busca? ')
+            resultado = cbib.buscar_contato(contatos, nome)
+            for indice, infos in resultado:
+                print(f'{indice} -> {infos}')
+            print('\n\n\n')
+        elif resposta == 3:
             print('Você selecionou a funcionalidade de atualizar contato')
-            contato_ind = int(input('Qual o índice correspondente ao contato a ser atualizado? '))
+            while True:
+                contato_ind = int(input('Qual o índice correspondente ao contato a ser atualizado? '))
+                if contato_ind <= len(contatos):
+                    break
+                else:
+                    print('Índice inválido')
             print('0 -> nome; 1 -> telefones; 2 -> email, 3 -> instagram')
-            ind = int(input('Qual é o índice a ser atualizado? '))
+            while True:
+                ind = int(input('Qual é o índice a ser atualizado? '))
+                if 0 <= ind <= 3:
+                    break
+                else:
+                    print('Índice inválido')
             info = str(input('Qual informação a ser atualizada? '))
-            if info == '':
-                print('Você selecionou a opção de excluir uma informação do índice escolhido')
-            cbib.atualizar_contato(contatos[contato_ind], ind, info)         
+            if info == '' and ind != 0:
+                os.system('cls')
+                print('Você selecionou a opção de excluir uma informação do índice escolhido\nPossibilidades de exclusão: ')
+                if type(contatos[contato_ind][ind]) is list:
+                    for element in contatos[contato_ind][ind]:
+                        print (element)
+                else:
+                    print(contatos[contato_ind][ind])
+                info_apaga = input('Qual informação deve ser excluída? ')
+                cbib.excluir_telefone(contatos[contato_ind], info_apaga)
+            else:
+                cbib.atualizar_contato(contatos[contato_ind], ind, info)
+            os.system('cls')         
         else:
             encerrador = 5*['o o o']
             os.system('cls')
@@ -107,4 +133,4 @@ def teste():
     print(contatos)
     cbib.aglutinador(contatos, 0, 1)
     print(contatos)
-teste()
+main()
