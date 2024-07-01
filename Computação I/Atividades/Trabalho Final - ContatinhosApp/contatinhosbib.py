@@ -24,8 +24,6 @@ def atualizar_contato (contato, indice, nova_inf):
         list.insert(contatos_geral, ind, contato)
         del contatos_geral[ind+1]
         return True
-    elif (type(contato[indice]) is list) and  (nova_inf not in contato[indice]) and (nova_inf == ''):
-        print('tenho q arrumar ainda')
     else:
         return False
     
@@ -40,6 +38,12 @@ def excluir_telefone (contato, telefone):
     if type(contatos_geral[indice][ind]) is list:
         if telefone in contatos_geral[indice][ind]:
             list.remove(contatos_geral[indice][ind], telefone)
+            if not contatos_geral[indice][ind]:
+                list.append(contatos_geral[indice][ind], '')
+            return True
+    elif type(contatos_geral[indice][ind]) is str:
+        if telefone == contatos_geral[indice][ind]:
+            contatos_geral[indice][ind] = ''
             return True
     return False
 
