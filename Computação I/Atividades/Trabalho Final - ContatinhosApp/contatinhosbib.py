@@ -89,15 +89,12 @@ def aglutinador (contatos, indice1, indice2):
         for g in [indice1, indice2]:
             if contatos_geral[g][1][0] == '':
                 del contatos_geral[g][1][0]
-        if not contatos_geral[indice1][1]:#para o caso de aglutinar dois contatos com números vazios
-            list.append(contatos_geral[indice1][1], '')
         for i in range(len(contatos_geral[indice2][1])):
             if (contatos_geral[indice2][1][i] not in contatos_geral[indice1][1]):
                 list.append(contatos_geral[indice1][1], contatos_geral[indice2][1][i])
+        if not contatos_geral[indice1][1]:#para o caso de aglutinar dois contatos com números vazios
+            list.append(contatos_geral[indice1][1], '')
         for j in range(2, 4):
-            if (contatos_geral[indice1][j] != contatos_geral[indice2][j]) and (contatos_geral[indice2][j] != ''):
-                contatos_geral[indice1][j] = [contatos_geral[indice1][j]]
-                list.append(contatos_geral[indice1][j], contatos_geral[indice2][j])
-                if contatos_geral[indice1][j][0] == '':
-                    del contatos_geral[indice1][j][0]
+            if (contatos_geral[indice1][j]) == '':
+                contatos_geral[indice1][j] = contatos_geral[indice2][j]
         del contatos_geral[indice2]
