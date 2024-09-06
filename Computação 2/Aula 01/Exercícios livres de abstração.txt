@@ -1,0 +1,64 @@
+PRIMEIRO EXERCÍCIO (TELEVISÃO)
+Você foi contratado para modelar uma televisão em Python. A televisão possui as seguintes características e funcionalidades:
+
+Características:
+
+Polegadas (inteiro)
+Marca (string)
+Preço (float)
+Estado (inicialmente desligada)
+Canal (sempre começa em 1 quando a TV é ligada)
+Volume (inicia em 1 da primeira vez e depois mantém o último valor definido pelo usuário, mesmo que a TV seja ligada ou desligada)
+Funcionalidades:
+
+Ligar e desligar a TV
+Verificar se está ligada ou desligada
+Mudar de canal (entre 1 e 4999)
+Mudar o volume (entre 1 e 99). Se o volume for superior a 80, deve alertar o usuário sobre o som alto e perguntar se ele quer mesmo este valor, se indicar que sim, altera para o definido, caso contrário, define como 79.
+Mostrar todos os dados simultaneamente (canal, volume e marca). Se o volume estiver entre 81 e 99, indicar que o volume está alto.
+Crie a classe Televisao para representar essas características e funcionalidades.
+
+==============================================================================================================================================================================================
+
+Crie uma classe em Python chamada Lampada que representa uma lâmpada com os seguintes atributos e métodos:
+
+Atributos:
+ligada: Um booleano que indica se a lâmpada está ligada (True) ou desligada (False).
+cor: Uma string que representa a cor da lâmpada. A lâmpada só pode ter quatro cores possíveis: branca, vermelha, verde ou azul. E ela sempre inicia em branca.
+intensidade: Um valor inteiro entre 1 e 5. Sempre inicia em 1.
+
+Métodos:
+ligar(): Um método que liga a lâmpada, alterando o estado de ligada para True. Retorna para mesma intensidade que estava antes de ser desligada.
+desligar(): Um método que desliga a lâmpada, alterando o estado de ligada para False.
+mudar_cor(nova_cor): Um método que muda a cor da lâmpada para a cor especificada pelo parâmetro nova_cor, respeitando as únicas cores permitidas.
+estado(): Um método que retorna uma string indicando se a lâmpada está ligada ou desligada, qual é a sua cor atual e a intensidade.
+aumentar_intensidade(): Um método que aumenta a intensidade da luz emitida, indicando em qual valor está, entre 1 e 5.
+diminuit_intensidade(): Um método que diminui a intensidade da luz emitida, indicando em qual valor está, entre 1 e 5. Caso diminua depois de 1, a lâmpada desliga.
+
+Implemente a classe Lampada conforme descrito acima e, em seguida, crie algumas instâncias dessa classe para testar seu funcionamento.
+
+Desafio: Implemente um timer com bibliotecas de Python, quando este horário chega no relógio do computador, altera quaisquer informações que estejam configuradas desta forma. Por exemplo, 18h desliga a lâmpada ou 7h liga a lâmpada na intensidade 1 e na cor verde. Você pode recorrer às bibliotecas deste início de código: 
+“import time
+from datetime import datetime”
+Estude sobre elas e tente fazer este  de configurar com timer.
+
+Exemplo:
+lampada = Lampada()
+lampada.ligar()
+lampada.mudar_cor("verde")
+lampada.aumentar_intensidade()
+print(lampada.estado())
+lampada.configurar_timer("11:32", "ligar", cor="verde", intensidade=1)
+lampada.configurar_timer("11:33", "ligar", cor="azul", intensidade=5)
+
+Saída do código executado 11:31 (com um sleep de intervalo de 15 segundos, até 11h33m):
+Lâmpada ligada na intensidade 1.
+Cor da lâmpada alterada para verde.
+Intensidade aumentada para 2.
+Lâmpada está ligada. Cor atual: verde. Intensidade: 2.
+A lâmpada já está ligada.
+Cor da lâmpada alterada para verde.
+Intensidade configurada para 1.
+A lâmpada já está ligada.
+Cor da lâmpada alterada para azul.
+Intensidade configurada para 5.
