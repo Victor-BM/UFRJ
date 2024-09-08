@@ -1,0 +1,111 @@
+#EXERCÍCIO DA TELEVISÃO
+class Televisao:
+    def __init__(self, polegadas, marca, preco):
+        self.polegadas = polegadas
+        self.marca = marca
+        self.preco = preco
+        self.estado = False
+        self.canal = 1
+        self.volume = 1
+
+    def ligar(self):
+        if not self.estado:
+            self.estado = True
+            print("A TV está ligada.")
+        else:
+            print("A TV já está ligada.")
+
+    def desligar(self):
+        if self.estado:
+            self.estado = False
+            print("A TV está desligada.")
+        else:
+            print("A TV já está desligada.")
+
+    def verificar_estado(self):
+        return "ligada" if self.estado else "desligada"
+
+    def mudar_canal(self, novo_canal):
+        if self.estado:
+            if 1 <= novo_canal <= 4999:
+                self.canal = novo_canal
+                print(f"Canal alterado para {self.canal}.")
+            else:
+                print("Canal inválido. Escolha entre 1 e 4999.")
+        else:
+            print("A TV está desligada. Ligue-a para mudar de canal.")
+
+    def mudar_volume(self, novo_volume):
+        if self.estado:
+            if 1 <= novo_volume <= 99:
+                if novo_volume > 80:
+                    print(f"Volume alto ({novo_volume}). Deseja continuar com este volume? (s/n)")
+                    resposta = input().strip().lower()
+                    if resposta == 's':
+                        self.volume = novo_volume
+                        print(f"Volume ajustado para {self.volume}.")
+                    else:
+                        self.volume = 79
+                        print(f"Volume ajustado para 79.")
+                else:
+                    self.volume = novo_volume
+                    print(f"Volume ajustado para {self.volume}.")
+            else:
+                print("Volume inválido. Escolha entre 1 e 99.")
+        else:
+            print("A TV está desligada. Ligue-a para mudar o volume.")
+
+    def mostrar_dados(self):
+        estado_tv = self.verificar_estado()
+        alerta_volume = "Volume alto!" if self.volume > 80 else ""
+        print(f"Marca: {self.marca}, Canal: {self.canal}, Volume: {self.volume}, Estado: {estado_tv}. {alerta_volume}")
+
+
+#EXERCÍCIO DA LÂMPADA INTELIGENTE
+class Lampada:
+    def __init__(self):
+        self.ligada = False
+        self.cor = 'branca'
+        self.intensidade = 1
+    
+    def ligar(self):
+        if not self.ligada:
+            self.ligada = True
+            print(f"Lâmpada ligada na intensidade {self.intensidade}.")
+        else:
+            print("A lâmpada já está ligada.")
+    
+    def desligar(self):
+        if self.ligada:
+            self.ligada = False
+            print("Lâmpada desligada.")
+        else:
+            print("A lâmpada já está desligada.")
+    
+    def mudar_cor(self, nova_cor):
+        cores_permitidas = ['branca', 'vermelha', 'verde', 'azul']
+        if nova_cor in cores_permitidas:
+            self.cor = nova_cor
+            print(f"Cor da lâmpada alterada para {self.cor}.")
+        else:
+            print("Cor inválida! As cores permitidas são: branca, vermelha, verde, azul.")
+    
+    def estado(self):
+        estado = "ligada" if self.ligada else "desligada"
+        return f"Lâmpada está {estado}. Cor atual: {self.cor}. Intensidade: {self.intensidade}."
+    
+    def aumentar_intensidade(self):
+        if self.intensidade < 5:
+            self.intensidade += 1
+            print(f"Intensidade aumentada para {self.intensidade}.")
+        else:
+            print("A intensidade já está no máximo (5).")
+    
+    def diminuir_intensidade(self):
+        if self.intensidade > 1:
+            self.intensidade -= 1
+            print(f"Intensidade diminuída para {self.intensidade}.")
+        elif self.intensidade == 1:
+            self.desligar()
+        else:
+            print("A intensidade já está no mínimo (1).")
