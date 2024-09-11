@@ -59,7 +59,7 @@ class Rádio (Eletrônicos):
             self.frequencia = round(random.uniform(87.5, 108), 2)
             print(f'Frequência definida para {self.frequencia} MHz')
         else:
-            print(f'O {self.__class__.__name__.lower()} está desligada! Ligue-o!')
+            print(f'O {self.__class__.__name__.lower()} está desligado! Ligue-o!')
 
     def mudar_volume (self, novo_volume):
         if self.ligado:
@@ -70,7 +70,7 @@ class Rádio (Eletrônicos):
                 print('Volume inválido!')
         else:
             self.volume = 1
-            print(f'O {self.__class__.__name__.lower()} está desligada! Ligue-o!') 
+            print(f'O {self.__class__.__name__.lower()} está desligado! Ligue-o!') 
 
 Tv01 = Televisão('toshiba', 'seial', 227, 1050, 50)
 radio01 = Rádio('marquinha', 'seial', 110, 34)
