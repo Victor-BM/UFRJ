@@ -1,0 +1,69 @@
+#EXERCÍCIO DOS ELETROELETRÔNICOS
+Faça um código Python para uma loja de eletroeletrônicos. A classe base Eletroeletronico é estendida por duas subclasses: Televisao e Radio, cada uma representando um tipo específico de dispositivo. Abaixo estão as descrições detalhadas das classes e seus métodos:
+
+Classe Eletroeletronico:
+Atributos:
+marca: Uma string que indica a marca do dispositivo.
+modelo: Uma string que indica o modelo do dispositivo.
+tensao: Um valor inteiro que representa a tensão do dispositivo em volts.
+preco: Um valor de ponto flutuante que indica o preço do dispositivo em reais.
+ligado: Um booleano que indica se o dispositivo está ligado (True) ou desligado (False).
+
+Métodos:
+__init__(self, marca, modelo, tensao, preco): O construtor da classe que inicializa os atributos do dispositivo.
+ligar_desligar(self): Alterna o estado do dispositivo entre ligado e desligado.
+verificar_estado(self): Retorna uma string indicando se o dispositivo está ligado ou desligado.
+mostrar_dados(self): Exibe na tela informações sobre o dispositivo, incluindo marca, modelo, tensão, estado (ligado/desligado) e preço.
+
+Classe Televisao (Subclasse de Eletroeletronico):
+Atributos adicionais:
+polegadas: Um valor inteiro que representa o tamanho da televisão em polegadas.
+canal: Um valor inteiro que indica o canal atual da televisão.
+volume: Um valor inteiro que representa o volume atual da televisão.
+
+Métodos adicionais:
+mudar_canal(self, canal): Permite alterar o canal da televisão para um valor válido dentro do intervalo de 1 a 4999.
+mudar_volume(self, volume): Permite ajustar o volume da televisão para um valor válido dentro do intervalo de 1 a 99.
+
+Classe Radio (Subclasse de Eletroeletronico):
+Atributos adicionais:
+frequencia: Um valor de ponto flutuante que indica a frequência atual do rádio em MHz.
+
+Métodos adicionais:
+sintonizar(self): Sintoniza o rádio em uma frequência aleatória dentro do intervalo FM (87.5 MHz a 108.0 MHz).
+mudar_volume(self, volume): Permite ajustar o volume do rádio para um valor válido dentro do intervalo de 1 a 99.
+
+Teste das Classes:
+O código de teste cria instâncias de Televisao e Radio, demonstrando o uso dos métodos definidos em suas respectivas classes, incluindo a mudança de canal, ajuste de volume, sintonização de rádio e exibição de informações sobre os dispositivos.
+
+#EXERCÍCIO DA CONTA BANCÁRIA
+Faça um código de gerenciamento de diferentes tipos de contas, como Conta Corrente e Conta Poupança, cada uma com suas características específicas.
+
+Para isso, você deve criar três classes: Conta, ContaCorrente e ContaPoupanca, utilizando herança.
+
+Classe Conta:
+Atributos:
+numero_conta: inteiro, número da conta (deve verificar se é um inteiro, se não for deve indicar erro)
+saldo: float, saldo atual da conta (deve verificar se é um float e se é maior que 0, se não for deve indicar erro)
+
+Métodos:
+depositar(self, valor): Método que permite depositar um determinado valor na conta.
+sacar(self, valor): Método que permite sacar um determinado valor da conta. A conta não pode ficar abaixo de 0.
+
+Classe ContaCorrente:
+Atributos adicionais:
+limite_cheque_especial: float, limite do cheque especial (deve verificar se é um float, se não for deve indicar erro)
+
+Métodos adicionais:
+usar_cheque_especial(self, valor): Método que permite utilizar o cheque especial para realizar um saque, caso o saldo da conta não seja suficiente. Com o cheque especial o saldo pode ficar negativo, até este limite.
+
+Classe ContaPoupanca:
+Atributos adicionais:
+taxa_juros: float, taxa de juros aplicada ao saldo da conta.
+
+Métodos adicionais:
+calcular_juros(self): Método que calcula os juros com base na taxa de juros e adiciona ao saldo da conta.
+
+Crie um teste simples para cada classe, instanciando um objeto de cada e chamando alguns dos métodos implementados para verificar se estão funcionando corretamente.
+A cada método coloque mensagens de saída para notificar a situação.
+
