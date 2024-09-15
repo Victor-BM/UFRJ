@@ -1,0 +1,117 @@
+EXERCÍCIO DO VEÍCULO HÍBRIDO
+Considere um sistema de gerenciamento de veículos, com as seguintes classes:
+Veículo: classe base que representa um veículo, com marca, modelo e ano.
+Motorizado: classe que representa um veículo motorizado (que herda de veículo), com potência e combustível.
+Elétrico: classe que representa um veículo elétrico (que herda de veículo), com autonomia e tempo de recarga.
+Híbrido: classe que representa um veículo híbrido, que herda tanto de Motorizado quanto de Elétrico, e possui capacidade do tanque de combustível e consumo médio de combustível.
+Usando herança múltipla, a classe Híbrido deve ser capaz de acessar e modificar atributos de ambas as classes mães. Além disso, devem implementar:
+partir(): todo veículo deve ser capaz de iniciar o movimento. Deve indicar a marca e o modelo e que está em movimento.
+alterarCombustivel(novoCombustivel): o carro motorizado pode alterar o combustível do veículo para o valor especificado. Antes da alteração, exiba uma mensagem informando o valor anterior e o novo valor do combustível.
+alterarAutonomia(novaAutonomia): o carro elétrico pode alterar a autonomia do veículo para o valor especificado. Antes da alteração, exiba uma mensagem informando o valor anterior e o novo valor da autonomia.
+
+Sugestão de código principal e respectiva saída:
+carro_motorizado = Motorizado("Chevrolet", "Onix LT", 2022, "100cv", "Gasolina")
+carro_motorizado.alterarCombustivel("Etanol")
+carro_motorizado.partir()
+
+carro_eletrico = Eletrico("Tesla", "Model 3", 2020, 500, 30)
+carro_eletrico.alterarAutonomia(600)
+carro_eletrico.partir()
+
+carro_hibrido = Hibrido("Toyota", "Prius", 2019, "100hp", "Gasolina", 200, 25, 40, 15)
+carro_hibrido.partir()
+carro_hibrido.alterarCombustivel("Etanol")
+carro_hibrido.alterarAutonomia(220)
+
+Saída:
+Alterando combustível de Gasolina para Etanol
+Chevrolet Onix LT do ano 2022 está em movimento!
+Alterando autonomia de 500 para 600
+Tesla Model 3 do ano 2020 está em movimento!
+Toyota Prius do ano 2019 está em movimento!
+Alterando combustível de Gasolina para Etanol
+Alterando autonomia de 200 para 220
+
+DESAFIO: faça esta questão com interação com o usuário. Deve ser capaz de instanciar motorizados, elétricos ou híbridos.
+
+EXERCÍCIO DAS DRAG QUEENS (QUESTÃO DE CODIFICAÇÃO DA P1 DE 2023.2)
+Drag queens são artistas muito versáteis e algumas manifestam suas artes de maneiras diferentes. Como uma pessoa encantada pelo universo das drag queens, você resolveu desenvolver um sistema, utilizando POO, para captar a abstração destas artistas em Python. Neste sentido, o sistema apresenta uma classe Drag Queen. Uma Drag Queen tem seu nome, que é sua identidade drag; nome out of drag, que é o nome de quem incorpora esta drag); uma haus, que como padrão é um valor vazio, porque uma drag pode ter uma "família drag" ou não. Uma drag sabe se maquiar; sabe fazer um lipsync (para isso precisa receber uma música de entrada) e deve botar seu nome com "INHAIIIIIII, aqui é a {drag queen} <nome da drag>." e se o valor da haus não for vazio, deve completar com "Da haus <nome da haus>". O nome out of drag só fica registrado mesmo, é quase um tabu para muitas utilizá-lo.
+Drag Queens podem ser performers ou artísticas. Drag Queens performers tem um novo atributo, que é repertório, sendo o que elas usam como material especializado para sua apresentação (por exemplo, "Balé", "Rock" ou "piadas politicamente incorretas"). Drag Queens artísticas tem um novo atributo, que é o material preferido, sendo o material que apresenta maior afinidade de trabalhar (por exemplo, "clown", "organza" ou "perucas sintéticas").
+A drag performer deve saber performar, e sua performance deve explicitamente ser relacionado com seu repertório.
+A drag artística deve apresentar seu material artístico, para indicar que a sua técnica artística explicitamente utiliza aquele material.
+Acima de todas, há a Drag Queen C-U-N-T, que apresenta Charisma, Uniqueness, Nerve and Talent (Carisma, singularidade, coragem e talento). Esta é tanto uma performer quanto artística. Ela consegue fazer o que uma drag performer e uma drag artística fazem. Uma C-U-N-T tanto deve saber performar quanto apresentar seu material artístico. Assim, ela ganha concurso e faz seu nome.
+Abaixo o código principal na esquerda e a saída esperada na direita:
+
+Entradas:
+drag1 = DragQueen("Wilma Cobra", "Adenílson Silva")
+drag1.maquiar()
+drag1.lipsync("Erva Venenosa, Rita Lee")
+print(drag1)
+performer1 = Performer("Mama Deira", "Natasha Costa", "Deiras", "Contorcionismo")
+performer1.performar()
+print(performer1)
+artistica1 = Artistica("Kidoi Deira", "Marcos Pereira", "Deiras", "Maquiagem animalesca")
+artistica1.apresentarMaterial()
+print(artistica1)
+cunt1 = CUNT("Dina Mitada", "Thiago Sousa", "Acrobacias", "Pedrarias")
+cunt1.performar()
+cunt1.apresentarMaterial()
+print(cunt1)
+
+Saídas:
+Se maquiando.
+Fazendo um lipsync de Erva Venenosa, Rita Lee.
+INHAIIIIIII, aqui é a DragQueen Wilma Cobra.
+Performando a sua especialidade, Contorcionismo.
+INHAIIIIIII, aqui é a Performer Mama Deira. Da haus Deiras
+Mostrando sua aptidão artística com Maquiagem animalesca.
+INHAIIIIIII, aqui é a Artistica Kidoi Deira. Da haus Deiras
+Performando a sua especialidade, Acrobacias.
+Mostrando sua aptidão artística com Pedrarias.
+INHAIIIIIII, aqui é a CUNT Dina Mitada.
+
+EXERCÍCIO DOS PRODUTOS ELETRÔNICOS
+Sistema de Gestão de Produtos
+
+Imagine que estamos desenvolvendo um sistema para gerenciar diferentes tipos de produtos em uma loja. Temos três categorias principais: produtos em geral, produtos eletrônicos e smartphones. Cada categoria tem suas características e especificidades. Um smartphone é um eletrônico, e um eletrônico é um produto, que é a abstração mais alta. 
+
+Requisitos:
+Classe Produto:
+Atributos:
+nome: Nome do produto.
+preco: Preço do produto.
+Métodos:
+exibir_detalhes(): Mostra os detalhes básicos do produto.
+
+Classe Eletronico:
+Atributos adicionais:
+garantia: Anos de garantia do produto eletrônico.
+marca: Marca do produto.
+Métodos adicionais:
+mostrar_garantia(): Exibe a duração da garantia do produto.
+
+Classe Smartphone:.
+Atributos adicionais:
+sistema_operacional: Sistema operacional do smartphone.
+capacidade_armazenamento: Capacidade de armazenamento em GB.
+Métodos adicionais:
+exibir_especificacoes(): Mostra as especificações completas do smartphone.
+
+Crie as classes Produto, Eletronico e Smartphone e implemente seus métodos conforme descrito. Em seguida, crie instâncias destas classes para simular produtos sendo adicionados ao sistema e exibindo suas informações.
+
+Sugestão de código principal e respectiva saída:
+produto = Produto("Cadeira", 50)
+print(produto.exibir_detalhes())
+
+notebook = Eletronico("Notebook", 800, 2, "Dell")
+print(notebook.exibir_detalhes())
+print(notebook.mostrar_garantia())
+
+celular = Smartphone("Pixel", 600, 2, "Google", "Android", 128)
+print(celular.exibir_especificacoes())
+
+Saída:
+Produto: Cadeira, Preço: $50
+Produto: Notebook, Preço: $800
+Garantia: 2 anos
+Produto: Pixel, Preço: $600, Marca: Google, Garantia: 2 anos, Sistema Operacional: Android, Armazenamento: 128GB
