@@ -1,0 +1,176 @@
+GABARITO DOS ELETROELETRÔNICOS
+import random
+
+class Eletroeletronico:
+    def __init__(self, marca, modelo, tensao, preco):
+        self.marca = marca
+        self.modelo = modelo
+        self.tensao = tensao
+        self.preco = preco
+        self.ligado = False
+
+    def ligar_desligar(self):
+        self.ligado = not self.ligado
+
+    def verificar_estado(self):
+        return "ligado" if self.ligado else "desligado"
+
+    def mostrar_dados(self):
+        estado = self.verificar_estado()
+        print(f"Produto: {self.__class__.__name__}. Marca: {self.marca} Modelo: {self.modelo} Tensão: {self.tensao}V Estado: {estado} Preço: R${self.preco:.2f}")
+
+
+class Televisao(Eletroeletronico):
+    def __init__(self, polegadas, marca, preco):
+        super().__init__(marca, "Televisão", 220, preco)
+        self.polegadas = polegadas
+        self.canal = 1
+        self.volume = 1
+
+    def mudar_canal(self, canal):
+        if self.ligado:
+            if 1 <= canal <= 4999:
+                self.canal = canal
+            else:
+                print("Canal inválido. Escolha um canal entre 1 e 4999.")
+        else:
+            print("Televisão está desligada.")
+
+    def mudar_volume(self, volume):
+        if self.ligado:
+            if 1 <= volume <= 99:
+                self.volume = volume
+                if volume > 80:
+                    print("Alerta! Volume alto.")
+            else:
+                print("Volume inválido. Escolha um volume entre 1 e 99.")
+        else:
+            print("Televisão está desligada.")
+
+
+class Radio(Eletroeletronico):
+    def __init__(self, marca, modelo, tensao, preco):
+        super().__init__(marca, modelo, tensao, preco)
+        self.frequencia = 87.5  
+        self.volume = 1
+
+    def sintonizar(self):
+        if self.ligado:
+            self.frequencia = random.uniform(87.5, 108.0)  
+            print(f"Rádio sintonizado na frequência: {self.frequencia:.1f} MHz")
+        else:
+            print("Rádio está desligado.")
+
+    def mudar_volume(self, volume):
+        if self.ligado:
+            if 1 <= volume <= 99:
+                self.volume = volume
+                if volume > 80:
+                    print("Alerta! Volume alto.")
+            else:
+                print("Volume inválido. Escolha um volume entre 1 e 99.")
+        else:
+            print("Rádio está desligado.")
+
+    def mostrar_dados(self):
+        super().mostrar_dados()
+        print(f"Frequência: {self.frequencia} MHz\nVolume: {self.volume}")
+
+
+tv = Televisao(42, "Samsung", 2000.50)
+tv.ligar_desligar()
+print(tv.verificar_estado())
+tv.mudar_canal(100)
+tv.mudar_volume(85)
+tv.mostrar_dados()
+tv.ligar_desligar()
+print(tv.verificar_estado())
+tv.ligar_desligar()
+print(tv.verificar_estado())
+tv.ligar_desligar()
+print(tv.verificar_estado())
+
+radio = Radio("Sony", "Radio FM", 110, 100.0)
+radio.ligar_desligar()
+print(radio.verificar_estado())
+radio.mostrar_dados()
+radio.sintonizar()
+
+
+
+GABARITO DA CONTA BANCÁRIA
+class Conta:
+    def __init__(self, numero_conta, saldo):
+        if not isinstance(numero_conta, int) or numero_conta <= 0:
+            print("Erro: O número da conta deve ser um inteiro positivo.")
+            self.numero_conta = None
+        else:
+            self.numero_conta = numero_conta
+        
+        if not isinstance(saldo, (int, float)) or saldo < 0:
+            print("Erro: O saldo da conta deve ser um número não negativo.")
+            self.saldo = None
+        else:
+            self.saldo = saldo
+    
+    def depositar(self, valor):
+        if valor > 0:
+            self.saldo += valor
+            print(f"Depósito de R${valor} realizado com sucesso. Novo saldo: R${self.saldo}")
+        else:
+            print("Erro: O valor do depósito deve ser maior que zero.")
+    
+    def sacar(self, valor):
+        if valor > 0:
+            if self.saldo >= valor:
+                self.saldo -= valor
+                print(f"Saque de R${valor} realizado com sucesso. Novo saldo: R${self.saldo}")
+            else:
+                print("Erro: Saldo insuficiente para realizar o saque.")
+        else:
+            print("Erro: O valor do saque deve ser maior que zero.")
+
+
+class ContaCorrente(Conta):
+    def __init__(self, numero_conta, saldo, limite_cheque_especial):
+        super().__init__(numero_conta, saldo)
+        if not isinstance(limite_cheque_especial, (int, float)) or limite_cheque_especial < 0:
+            print("Erro: O limite de cheque especial deve ser um número não negativo.")
+            self.limite_cheque_especial = None
+        else:
+            self.limite_cheque_especial = limite_cheque_especial
+    
+    def usar_cheque_especial(self, valor):
+        if valor > 0:
+            if self.saldo + self.limite_cheque_especial >= valor:
+                self.saldo -= valor
+                print(f"Uso do cheque especial de R${valor} realizado com sucesso. Novo saldo: R${self.saldo}")
+            else:
+                print("Erro: Limite de cheque especial excedido.")
+        else:
+            print("Erro: O valor do uso do cheque especial deve ser maior que zero.")
+
+
+class ContaPoupanca(Conta):
+    def __init__(self, numero_conta, saldo, taxa_juros):
+        super().__init__(numero_conta, saldo)
+        if not isinstance(taxa_juros, (int, float)) or taxa_juros < 0:
+            print("Erro: A taxa de juros deve ser um número não negativo.")
+            self.taxa_juros = None
+        else:
+            self.taxa_juros = taxa_juros
+    
+    def calcular_juros(self):
+        juros = self.saldo * self.taxa_juros
+        self.saldo += juros
+        print(f"Juros calculados e adicionados ao saldo. Novo saldo: R${self.saldo}")
+
+
+
+conta_corrente = ContaCorrente(numero_conta=123456, saldo=1000, limite_cheque_especial=500)
+conta_corrente.depositar(500)
+conta_corrente.usar_cheque_especial(2000)
+
+conta_poupanca = ContaPoupanca(numero_conta=789012, saldo=5000, taxa_juros=0.05)
+conta_poupanca.depositar(1000)
+conta_poupanca.calcular_juros()
