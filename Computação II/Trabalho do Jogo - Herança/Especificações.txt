@@ -1,0 +1,28 @@
+[EXERCÍCIO DO JOGO] [ESTE EXERCÍCIO VALE PONTO PARA MÉDIA FINAL]
+Este exercício é feito para ser realizado em dupla.
+Vocês vão desenvolver um sistema utilizando o que foi aprendido na disciplina até Abstração e Herança. O jogo precisa utilizar classes e objetos.
+Não há um limite ou restrição sobre o tipo do jogo, nem de quantidade de linhas do código ou do tipo (por exemplo, RPG, corrida, dentre outros).
+O código precisa implementar os princíos de Abstração e Herança corretamente, como as boas práticas aprendidas em aula.
+O código precisa implementar uma herança multinível ou composta.
+O código precisa ter, pelo menos, quatro classes.
+O código não deve ser trivial, a complexidade será objeto de avaliação. Por exemplo, um código simples de personagens que golpeiam uns aos outros.
+Para valores aleatórios, utilizem a biblioteca random com abundância. Por exemplo, criar personagens com atributos aleatórios, jogadas aleatórias ou ações com resultados randômicos.
+Não desenvolvam jogos com temática discriminatória, opressora ou preconceituosa, o trabalho será zerado e terão consequências externas ao mesmo.
+Será um diferencial se criarem um jogo na temática do curso de um dos integrantes da dupla.
+O jogo precisa ter as características de um jogo, então precisa ter um final (ou uma direção para um final), uma dinâmica bem estruturada e dinamismo. Pode ser um jogo para um ou mais jogadores, mesmo que os turnos sejam assíncronos (um joga, depois o outro joga, e assim por diante, como no jogo da velha, por exemplo).
+
+IMPORTANTE: o jogo não deve ser excessivamente complexo ou longo. Essa não é a intenção do trabalho, e quem vai corrigir é o monitor (Pedro) e ele tem coisas para fazer da vida dele, como todos nós. Então faça algo interessante e divertido, com um tamanho moderado. O jogo não precisa ser nada disruptivo do estado da arte dos games no mundo, é um trabalho que vale 1 ponto.
+
+Entrega: até dia 20/09 às 10h (final da aula). Trabalhos entregues após esta data automaticamente receberão 0,5 pela entrega, em caso de qualidade decente. Trabalhos entregues no prazo receberão entre 0,1 e 1.
+Para quem? Direto para o Pedro no e-mail dele (pedromanoel.hsantos@gmail.com), porque é um trabalho pontuado e oficial.
+No assunto do e-mail coloque: [MATERIAIS] <SEU NOME E SOBRENOME> EXERCÍCIO DO JOGO
+No corpo do e-mail coloque, exatamente como este formato:
+INTEGRANTES: <nome e sobrenome de cada integrante da dupla>
+NOME: <o jogo deve ter um nome>
+TAREFAS REALIZADAS: <o que cada um fez, e se foi a mesma coisa, o quanto cada um fez>
+DIFICULDADES E DESAFIOS: <o que foi complicado? Qual parte foi desafiadora? Onde deu mais erro? Qual ideia foi complicada?>
+USO DE IA: <o que foi utilizado de IA no geral, qualquer IA. Se nada foi utilizado, nada>
+ESPECIFICIDADES: <elementos específicos que você gostaria de ressaltar no seu código. Pode ser nada>
+
+Depois dessa ficha, o código deve estar no anexo da mensagem, em arquivo .py. Caso seja mais de um arquivo, envie com nomes adequados.
+O jogo melhor avaliado, em todos os critérios acima e pela percepção do Pedro, a dupla vai receber 1 PB cada integrante.
