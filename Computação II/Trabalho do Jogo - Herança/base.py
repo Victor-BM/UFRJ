@@ -1,12 +1,38 @@
 import random
+import docs
     
 class Eventos:
     def __init__ (self):
-        pass
+        self.dia = 0
+
+    def eventos_clima (self):
+        clima = random.choice(['Chuva Ácida', 'Tempestade Radioativa', 'Inverno Nuclear', 'Inferno Solar', 'Ameno', 'Ascensão das Trevas'])
+        if clima == 'Chuva Ácida':
+            return (-5, None)
+        elif clima == 'Tempestade Radioativa':
+            return (-15, 'desconexão')
+        elif clima == 'Inverno Nuclear':
+            return (-20, 'perturbação')
+        elif clima == 'Inferno Solar':
+            return (-25, 'desconexão')
+        elif clima == 'Ascensão das Trevas':
+            return (0, 'quebra mental')
+        return (0, None)
+        #gerar o texto baseado no clima
+    
+    def eventos_sanidade (self):
+        evento = random.choice(['Artefato Além da Compreensão', 'Ecos Imemoriais', 'Não Há Esperança', 'Essas vozes falam a verdade?'])
+        if evento == 'Artefato Além da Compreensão':
+            return 'ruptura de realidade'
+        elif evento == 'Ecos Imemoriais':
+            return 'desconexão'
+        elif evento == 'Não Há Esperança':
+            return 'perturbação'
+        elif evento == 'Essas vozes falam a verdade?':
+            return 'quebra mental'
 
 class Item:
-    def __init__ (self, id, nome, tipo, disponibilidade, descrição):
-        self.id = id
+    def __init__ (self, nome, tipo, disponibilidade, descrição):
         self.nome = nome
         self.tipo = tipo
         self.disponibilidade = int(disponibilidade)
@@ -18,11 +44,14 @@ class Item:
 class Inventário:
     def __init__ (self):
         self.items = []
-        self.espaço = 15
+        self.espaço = 5
     
     def adicionar_item (self, item):
-        self.items.append(item)
-        print('Item adicionado no inventário')
+        if len(self.items) == 5:
+            print('Inventário Cheio!')
+        else:
+            self.items.append(item)
+            print('Item adicionado no inventário')
     
     def remover_item (self, item):
         if item in self.items:
@@ -39,13 +68,12 @@ class Inventário:
                 print(f'{item.exibir_informação()}')
 
 class Entidades:
-    def __init__ (self, fisicalidade, racionalidade, emocionalidade, nível):
+    def __init__ (self, fisicalidade, racionalidade, emocionalidade):
         self.fisicalidade = fisicalidade
         self.racionalidade = racionalidade
         self.emocionalidade = emocionalidade
-        self.nível = int(nível)
-        self.vida_máx = 100*(self.nível)
-        self.energia_máx = 100*(self.nível)
+        self.vida_máx = 100
+        self.energia_máx = 100
         self.vida = self.vida_máx
         self.energia = self.energia_máx
         self.sorte = 20*[1]
@@ -65,14 +93,13 @@ class Entidades:
                 self.estado = False
                 
 class Monstros (Entidades):
-    def __init__(self, fisicalidade, racionalidade, emocionalidade, nível):
-        super().__init__(fisicalidade, racionalidade, emocionalidade, nível)
+    def __init__(self, tipo, fisicalidade, racionalidade, emocionalidade):
+        super().__init__(fisicalidade, racionalidade, emocionalidade)
     
     def debuff_vida (self):
         if 75 <= self.vida:
             self.sorte = 20*[1]
         elif 50 <= self.vida < 75:
-            #mentiras
             for i in range (1, 16):
                 self.sorte[i] += 1
         elif 25 <= self.vida < 50:
@@ -83,27 +110,31 @@ class Monstros (Entidades):
                 self.sorte[i] += 1
     
 class Jogador (Entidades, Eventos):
-    def __init__(self, fisicalidade, racionalidade, emocionalidade, nível):
-        Entidades.__init__(self, fisicalidade, racionalidade, emocionalidade, nível)
+    def __init__(self, fisicalidade, racionalidade, emocionalidade):
+        Entidades.__init__(self, fisicalidade, racionalidade, emocionalidade)
         Eventos.__init__(self)
         self.sanidade_máx = 100
         self.sanidade = self.sanidade_máx
-        self.exp = 0
 
     def ficha (self):
         print(f'Fisicalidade: {self.fisicalidade}\nRacionalidade: {self.racionalidade}\nEmocionalidade: {self.emocionalidade}')
-        print(f'Vida: {self.vida}\nEnergia: {self.energia}\nSanidade: {self.sanidade}\nNível: {self.nível}')   
+        print(f'Vida: {self.vida}\nEnergia: {self.energia}\nSanidade: {self.sanidade}')   
     
     def explorar (self):
-        self.energia -= 1
-        #gerar evento
+        if self.energia >= 5:
+            self.energia -= 5
+        else:
+            self.descansar(15)
+            self.sanidade -= 10
 
     def descansar (self, horas_de_descanso):
-        self.energia += (1*horas_de_descanso)
+        self.energia += (5*horas_de_descanso)
         if self.energia >= self.energia_máx:
             self.energia = self.energia_máx
-        #chances de gerar evento
-    
+        if horas_de_descanso >= 8:
+            return self.eventos_clima()
+        self.dia += 1
+
     def curar (self, item):
         if item.tipo == 'vida':
             self.vida += item.disponibilidade
@@ -118,7 +149,8 @@ class Jogador (Entidades, Eventos):
             if self.sanidade >= self.sanidade_máx:
                 self.sanidade = self.sanidade_máx
     
-    def perder_sanidade(self, trauma):
+    def perder_sanidade(self):
+        trauma = self.eventos_sanidade()
         if trauma == 'desconexão':
             self.sanidade -= 25
         elif trauma == 'perturbação':
@@ -150,32 +182,6 @@ class Jogador (Entidades, Eventos):
         else:
             for i in range(6, 11):
                 self.sorte[i] = 0
-
-    def ganhar_exp (self, ganho):
-        self.exp += ganho
-    
-    def uppar_nível (self):
-        if self.exp >= 10:
-            novo_nível = int(self.exp/10)
-            self.exp -= (novo_nível*10)
-            while True:
-                print('Você possui 5 pontos de atributos para distribuir!\nInsira uma lista com o novo valor para fisicalidade, racionalidade e emocionalidade respectivamente!')
-                novo_fisicalidade, novo_racionalidade, novo_emocionalidade = eval(input('Digite os acréscimos de atributos: '))
-                if isinstance(novo_fisicalidade, int) and isinstance(novo_racionalidade, int) and isinstance(novo_racionalidade, int) and ((novo_fisicalidade + novo_racionalidade + novo_emocionalidade) == (5*novo_nível)):
-                    self.fisicalidade += novo_fisicalidade
-                    self.racionalidade += novo_racionalidade
-                    self.emocionalidade += novo_emocionalidade 
-                    self.nível += novo_nível
-                    self.vida_máx = 100*(self.nível)
-                    self.vida += novo_nível*self.vida_máx
-                    self.energia_máx = 100*(self.nível)
-                    self.energia += novo_nível*self.energia_máx
-                    self.sanidade_máx = 100*(self.nível)
-                    self.sanidade += novo_nível*self.sanidade_máx
-                    break
-                print('Valores inválidos! Exemplo: [1, 2, 2]')
-        else:
-            print('Você não possui experiência o suficiente para uppar!')
 
     def combater (self, inimigo, modalidade):
         dado_jogador = self.rolar_D20()
@@ -248,13 +254,7 @@ class Jogador (Entidades, Eventos):
                     dano = self.emocionalidade + 3
         return dano
     #add frases e interações com as personalidades
-    
-        
 
-inventario = Inventário()
-jogador1 = Jogador(2, 2, 1, 1)
-jogador1.ganhar_exp(10)
-jogador1.uppar_nível()
-jogador1.ficha()
-
-
+    def fugir (self):
+        self.energia -= 10
+        return True if self.energia >= 50 else False
