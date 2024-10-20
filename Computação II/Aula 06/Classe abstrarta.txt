@@ -1,0 +1,23 @@
+Você foi encarregado de implementar um sistema de controle de veículos para uma empresa de transportes. O sistema deve ter uma classe abstrata chamada Veiculo que será herdada por três classes concretas: Carro, Moto e Caminhao.
+
+Os requisitos são os seguintes:
+
+Classe abstrata Veiculo:
+
+Deve ter um atributo privado chamado _velocidade que representa a velocidade do veículo. Esse atributo só pode ser acessado e modificado por meio de métodos getter e setter com encapsulamento (usando decoradores @property e @setter).
+Deve conter um método abstrato chamado acelerar(), que será implementado de maneira diferente em cada veículo.
+Deve conter um método abstrato chamado desacelerar() que também será implementado de maneira distinta em cada classe concreta.
+Deve ter um método concreto exibir_velocidade() que mostra a velocidade atual do veículo.
+Classes concretas Carro, Moto e Caminhao:
+
+Todas as classes devem herdar de Veiculo e implementar os métodos acelerar() e desacelerar().
+O método acelerar() de cada classe deve aumentar a velocidade em incrementos diferentes:
+Carro: 10 km/h
+Moto: 15 km/h
+Caminhão: 5 km/h
+O método desacelerar() de cada classe deve diminuir a velocidade em decrementos diferentes:
+Carro: 8 km/h
+Moto: 10 km/h
+Caminhão: 3 km/h
+Todas as classes devem respeitar o limite de velocidade mínima (0 km/h) e não permitir que a velocidade fique negativa.
+Implemente este sistema com as classes descritas acima e, em seguida, crie instâncias de Carro, Moto e Caminhao, demonstrando o uso do polimorfismo ao chamar os métodos acelerar(), desacelerar() e exibir_velocidade() para diferentes tipos de veículos.
