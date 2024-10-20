@@ -1,0 +1,150 @@
+EXERCÍCIO DOS FUNCIONÁRIOS
+class Funcionario:
+    def __init__(self, nome, salario):
+        self.__nome = nome
+        self.__salario = salario
+        self.__cargo = "Funcionário"
+
+    @property
+    def nome(self):
+        return self.__nome
+
+    def get_salario(self, solicitante): #neste caso nós utilizamos o get (e não o decorador) porque a intenção é pegar o salário de outros, não acessar diretamente o próprio, é realmente um método e não para usar como atributo
+        if isinstance(solicitante, Gerente):
+            return self.__salario
+        else:
+            print("Acesso não permitido. Apenas gerentes podem acessar salários de outros funcionários.")
+
+    @property
+    def cargo(self):
+        return self.__cargo
+
+    @property
+    def salario(self): #o getter não permite acesso direto ao atributo, apenas pelo método que analisa se é uma instância de gerente
+        print("Acesso direto ao salário não é permitido.")
+
+    @salario.setter
+    def salario(self, novo_salario):
+        if novo_salario > 0:
+            self.__salario = novo_salario
+        else:
+            print("Salário inválido. Deve ser maior que zero e não pode ser vazio.")
+            
+    @nome.setter
+    def nome(self, novo_nome):
+        if novo_nome.isalpha() and novo_nome.strip():
+            self.__nome = novo_nome
+        else:
+            print("Nome inválido. Deve conter apenas letras e não pode ser vazio.")
+
+    def calcular_bonus(self):
+        return self.__salario * 0.1
+
+
+class Gerente(Funcionario):
+    def __init__(self, nome, salario):
+        super().__init__(nome, salario)
+        self.__cargo = "Gerente"
+
+    @property
+    def cargo(self):
+        return self.__cargo
+
+    @cargo.setter
+    def cargo(self, novo_cargo):
+        if novo_cargo == "Analista":
+            print("Apenas gerentes podem ser convertidos em analistas.")
+        else:
+            self.__cargo = novo_cargo
+
+    def gerenciar_equipe(self):
+        print(f"O gerente {self.nome} está gerenciando sua equipe.")
+
+    def acessar_salario_funcionario(self, funcionario): #aqui implementamos um método específico para o gerente, garantindo seu acesso exclusivo
+        return funcionario.get_salario(self)
+
+
+class Analista(Funcionario):
+    def __init__(self, nome, salario):
+        super().__init__(nome, salario)
+        self.__cargo = "Analista"
+
+    @property
+    def cargo(self):
+        return self.__cargo
+
+    @cargo.setter
+    def cargo(self, novo_cargo):
+        if novo_cargo == "Gerente":
+            print("Apenas analistas podem ser convertidos em gerentes.")
+        else:
+            self.__cargo = novo_cargo
+
+    def analisar_dados(self):
+        print(f"O analista {self.nome} está analisando dados.")
+
+
+funcionario1 = Funcionario("Carlos", 3000)
+analista1 = Analista("João", 5000)
+gerente1 = Gerente("Maria", 10000)
+
+gerente1.nome = "123"
+analista1.salario = -45
+
+print("Salário do funcionário Carlos:", gerente1.acessar_salario_funcionario(funcionario1))
+print("Salário do analista João:", gerente1.acessar_salario_funcionario(analista1))
+
+funcionario1.get_salario(analista1)  #não permite
+funcionario1.salario
+
+
+EXERCÍCIO DOS PRODUTOS
+class Produto:
+    def __init__(self, nome, preco):
+        self.nome = nome
+        self.preco = preco
+
+    def desconto(self):
+        return self.preco * 0.95
+
+    def detalhes(self):
+        return f"Nome: {self.nome}, Preço: R${self.preco:.2f}"
+
+class Livro(Produto):
+    def __init__(self, nome, preco, autor, paginas):
+        super().__init__(nome, preco)
+        self.autor = autor
+        self.paginas = paginas
+
+    def desconto(self):
+        return self.preco * 0.90
+
+    def detalhes(self):
+        return f"{super().detalhes()}, Autor: {self.autor}, Páginas: {self.paginas}"
+
+class Eletronico(Produto):
+    def __init__(self, nome, preco, marca):
+        super().__init__(nome, preco)
+        self.marca = marca
+
+    def desconto(self):
+        return self.preco * 0.92
+
+    def detalhes(self):
+        return f"{super().detalhes()}, Marca: {self.marca}"
+
+class Roupa(Produto):
+    def __init__(self, nome, preco, tamanho):
+        super().__init__(nome, preco)
+        self.tamanho = tamanho
+
+    def detalhes(self):
+        return f"{super().detalhes()}, Tamanho: {self.tamanho}"
+
+produtos = [Livro("1984", 20.00, "George Orwell", 300), 
+            Eletronico("TV", 2000.00, "Samsung"), 
+            Roupa("Camiseta", 50.00, "M")]
+
+for produto in produtos:
+    print(produto.detalhes())
+    print(f"Preço com desconto: R${produto.desconto():.2f}\n")
