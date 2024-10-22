@@ -1,0 +1,85 @@
+Você foi encarregado de implementar um sistema de controle de veículos para uma empresa de transportes. O sistema deve ter uma classe abstrata chamada Veiculo que será herdada por três classes concretas: Carro, Moto e Caminhao.
+
+Os requisitos são os seguintes:
+
+Classe abstrata Veiculo:
+
+Deve ter um atributo privado chamado _velocidade que representa a velocidade do veículo. Esse atributo só pode ser acessado e modificado por meio de métodos getter e setter com encapsulamento (usando decoradores @property e @setter).
+Deve conter um método abstrato chamado acelerar(), que será implementado de maneira diferente em cada veículo.
+Deve conter um método abstrato chamado desacelerar() que também será implementado de maneira distinta em cada classe concreta.
+Deve ter um método concreto exibir_velocidade() que mostra a velocidade atual do veículo.
+Classes concretas Carro, Moto e Caminhao:
+
+Todas as classes devem herdar de Veiculo e implementar os métodos acelerar() e desacelerar().
+O método acelerar() de cada classe deve aumentar a velocidade em incrementos diferentes:
+Carro: 10 km/h
+Moto: 15 km/h
+Caminhão: 5 km/h
+O método desacelerar() de cada classe deve diminuir a velocidade em decrementos diferentes:
+Carro: 8 km/h
+Moto: 10 km/h
+Caminhão: 3 km/h
+Todas as classes devem respeitar o limite de velocidade mínima (0 km/h) e não permitir que a velocidade fique negativa.
+Implemente este sistema com as classes descritas acima e, em seguida, crie instâncias de Carro, Moto e Caminhao, demonstrando o uso do polimorfismo ao chamar os métodos acelerar(), desacelerar() e exibir_velocidade() para diferentes tipos de veículos.
+
+
+
+----------------------------------------------------------------------------
+
+
+
+
+Você desenvolverá parte de um sistema de gerenciamento de veículos autônomos. Neste sistema, todos os veículos compartilham certas características em comum, como o modelo e a velocidade máxima, mas possuem também comportamentos distintos, como o nível de autonomia e as capacidades de ataque e condução autônoma. A sua tarefa é implementar este sistema usando os conceitos de herança, classe abstrata, polimorfismo e encapsulamento.
+
+Você deverá desenvolver três classes: Veículo, CarroAutonomo e CaminhaoAutonomo, seguindo as diretrizes abaixo:
+
+Requisitos:
+
+Classe Veículo (Classe abstrata):
+A classe Veículo será a classe mãe abstrata e terá os seguintes atributos e métodos:
+Atributos:
+modelo (público): O nome ou modelo do veículo.
+_velocidade (protegido): A velocidade máxima do veículo.
+Métodos:
+velocidade: Um getter para obter a velocidade do veículo.
+velocidade.setter: Um setter que permite alterar a velocidade, mas a nova velocidade não pode ser maior que 10% do valor original.
+dirigir(): Um método abstrato que deve ser implementado nas classes filhas.
+str(): Um método que retorna uma descrição completa dos atributos do veículo, como o modelo e a velocidade máxima.
+
+Classe CarroAutonomo:
+A classe CarroAutonomo herda de Veículo e adiciona:
+Atributos:
+nivel_autonomia (público): Um valor de 1 a 5, indicando o nível de condução autônoma.
+Métodos:
+dirigir(): Implementa o método abstrato de Veículo para descrever como o carro autônomo opera de acordo com seu nível de autonomia.
+ativar_piloto_automatico(): Método próprio que verifica se o nível de autonomia é maior ou igual a 3, permitindo que o piloto automático seja ativado. Caso contrário, o piloto automático não será ativado.
+str(): Retorna uma ficha com as informações do carro, incluindo seu modelo, velocidade máxima e nível de autonomia.
+
+Classe CaminhaoAutonomo:
+A classe CaminhaoAutonomo herda de CarroAutonomo e ajusta a funcionalidade do método dirigir() para descrever a condução autônoma de um caminhão em rotas de longa distância.
+Métodos:
+dirigir(): Especifica como o caminhão autônomo dirige.
+str(): Similar ao método da classe CarroAutonomo, mas destacando que se trata de um caminhão autônomo.
+
+Entradas:
+carro = CarroAutonomo("Tesla Model S", 200, 5)
+print(carro)
+carro.velocidade = 220
+print(f"Nova velocidade: {carro.velocidade} km/h")
+carro.velocidade = 210
+print(f"Nova velocidade: {carro.velocidade} km/h")
+print(carro.ativar_piloto_automatico())
+carro_nivel_baixo = CarroAutonomo("Ford Focus", 180, 2)
+print(carro_nivel_baixo.ativar_piloto_automatico())
+caminhao = CaminhaoAutonomo("Volvo FH", 120, 4)
+print(caminhao)
+print(caminhao.dirigir())
+
+Saídas:
+Modelo: Tesla Model S, Velocidade máxima: 200 km/h, Nível de autonomia: 5
+Nova velocidade: 200 km/h
+Nova velocidade: 210 km/h
+Piloto automático ativado no Tesla Model S, nível de autonomia 5.
+Piloto automático não disponível para o Ford Focus com autonomia nível 2.
+Modelo: Volvo FH, Velocidade máxima: 120 km/h, Nível de autonomia: 4 (Caminhão Autônomo)
+O caminhão autônomo Volvo FH está operando no nível 4. Dirigindo com alta precisão em rotas de longa distância.
