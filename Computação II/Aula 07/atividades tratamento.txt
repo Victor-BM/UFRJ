@@ -1,0 +1,157 @@
+Arquivo 1:
+
+Crie duas funções em Python: dividir e potencia. Implemente tratamento de exceções em cada uma delas:
+Em dividir, capture (não levante) a exceção ZeroDivisionError e exiba uma mensagem indicando que não é possível dividir por zero.
+
+Em potencia, capture (não levante) a exceção TypeError e exiba uma mensagem indicando que ambos os argumentos devem ser números.
+
+Entradas e saídas:
+
+dividir(10, 0)
+#Saída: "Erro: Não é possível dividir por zero."
+
+potencia('abc', 2)
+#Saída: "Erro: Ambos os argumentos devem ser números."
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+Arquivo 2:
+
+Crie uma classe chamada ListaNumeros que tenha os métodos de instância somar, subtrair, adicionar_numero e remover_numero. Implemente tratamento de exceções em cada método:
+No método somar, capture (não levante) a exceção TypeError e exiba uma mensagem indicando que todos os argumentos devem ser números.
+
+No método subtrair, capture (não levante) a exceção TypeError e exiba uma mensagem indicando que todos os argumentos devem ser números. Caso esteja correto, subtrai os dois valores.
+
+No método adicionar_numero, capture e levante a exceção ValueError e exiba uma mensagem indicando que o número a ser adicionado deve ser um inteiro. Caso esteja correto, deve adicionar na lista.
+
+No método remover_numero, capture e levante a exceção IndexError e exiba uma mensagem indicando que a lista está vazia, portanto não há números para remover. Caso esteja correto, deve retirar o último valor da lista.
+
+Exemplo de entrada e saída esperada:
+
+Copiar código
+lista = ListaNumeros()
+lista.somar(10, 'abc')
+lista.subtrair('abc', 5)
+lista.adicionar_numero('abc')
+lista.remover_numero()
+lista.remover_numero()
+
+# Saída:
+Erro: Todos os argumentos devem ser números.
+Erro: Todos os argumentos devem ser números.
+Erro: O número a ser adicionado deve ser um inteiro.
+Erro: A lista está vazia, não há números para remover.
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+3. Desenvolva um sistema básico de gerenciamento de contas bancárias.
+Sua tarefa é implementar uma classe chamada ContaBancaria que oferece funcionalidades de depósito, saque e consulta de saldo. Além disso, a classe deve levantar exceções customizadas em situações específicas e interagir com o usuário através do terminal.
+
+Estrutura da Classe:
+
+A classe ContaBancaria deve possuir os seguintes métodos:
+
+a) __init__(self, saldo_inicial: float)
+
+Método inicializador que recebe um saldo inicial como argumento.
+Saldo é um atributo privado. Deve apresentar getter e setter.
+Caso o saldo inicial seja negativo, deve-se levantar uma exceção ValorInvalidoException.
+Seja no construtor ("O saldo inicial não pode ser negativo.") ou no setter ("O saldo não pode ser negativo.")
+b) depositar(self, valor: float)
+
+Método que adiciona um valor ao saldo da conta.
+Deve levantar uma exceção ValorInvalidoException se o valor a ser depositado for negativo.
+Mensagem de erro: "Não é possível depositar um valor negativo."
+c) sacar(self, valor: float)
+
+Método que subtrai um valor do saldo da conta.
+Deve levantar uma exceção ValorInvalidoException se o valor a ser sacado for negativo.
+Mensagem de erro: "Não é possível sacar um valor negativo."
+Deve levantar uma exceção SaldoInsuficienteException se o valor a ser sacado for maior que o saldo disponível na conta.
+Exceções Personalizadas:
+
+ValorInvalidoException
+
+Exceção levantada quando um valor negativo é fornecido para depósito ou saque ("Valor inválido.").
+SaldoInsuficienteException
+
+Exceção levantada quando o valor do saque é maior que o saldo disponível na conta.
+Deve exibir uma mensagem indicando o saldo atual da conta.
+Interatividade com o Usuário:
+Ao iniciar o programa, o usuário deve fornecer um saldo inicial para a conta bancária.
+Após a inicialização, o programa deve exibir um menu com opções para o usuário:
+Opção 1: Depositar um valor na conta.
+Opção 2: Sacar um valor da conta.
+Opção 3: Consultar o saldo atual da conta.
+Opção 0: Sair do programa.
+O programa deve tratar todas as exceções levantadas durante as operações e exibir mensagens de erro apropriadas.
+O programa deve continuar a exibir o menu até que o usuário escolha a opção para sair.
+Execução:
+Exemplo de execução do programa:
+
+yaml
+Copiar código
+Bem-vindo ao Banco do LP!
+
+Digite o saldo inicial da sua conta: 1000
+Saldo atual: 1000
+
+Opções disponíveis:
+1 - Depositar
+2 - Sacar
+3 - Consultar saldo
+0 - Sair
+
+Escolha uma opção: 1
+Digite o valor que deseja depositar: 500
+Novo saldo: 1500
+
+Opções disponíveis:
+1 - Depositar
+2 - Sacar
+3 - Consultar saldo
+0 - Sair
+
+Escolha uma opção: 2
+Digite o valor que deseja sacar: 200
+Novo saldo: 1300
+
+Opções disponíveis:
+1 - Depositar
+2 - Sacar
+3 - Consultar saldo
+0 - Sair
+
+Escolha uma opção: 2
+Digite o valor que deseja sacar: 1500
+SaldoInsuficienteException: Saldo insuficiente para sacar 1500. Saldo atual: 1300.
+
+Opções disponíveis:
+1 - Depositar
+2 - Sacar
+3 - Consultar saldo
+0 - Sair
+
+Escolha uma opção: 3
+Saldo atual: 1300
+
+Opções disponíveis:
+1 - Depositar
+2 - Sacar
+3 - Consultar saldo
+0 - Sair
+
+Escolha uma opção: 2
+Digite o valor que deseja sacar: -200
+Erro ao sacar: Não é possível sacar um valor negativo.
+
+Opções disponíveis:
+1 - Depositar
+2 - Sacar
+3 - Consultar saldo
+0 - Sair
+
+Escolha uma opção: 0
+Saindo...
+
+Obrigado por usar nossos serviços!
