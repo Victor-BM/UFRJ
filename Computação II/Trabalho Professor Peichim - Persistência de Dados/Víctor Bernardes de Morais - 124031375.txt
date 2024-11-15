@@ -1,0 +1,601 @@
+Questão 1
+--------------------------------------------------
+lista_empregados = []
+lista_departamentos = []
+lista_empregados_atualizada = []
+
+def leitor_dados():
+    '''Função que lê os arquivos e salva em matrizes'''
+    try:
+        with open ('empregados.txt', 'rt') as file:
+            lista_aux = file.read().split('\n')
+            for empregado in range(len(lista_aux)):
+                lista_empregados.append(lista_aux[empregado].split(','))
+        with open ('departamentos.txt', 'rt') as file:
+            lista_aux = file.read().split()
+            for departamento in range(len(lista_aux)):
+                lista_departamentos.append(lista_aux[departamento].split(','))
+        return True
+    except FileNotFoundError:
+        print(f'Arquivo não encontrado')
+        return False
+
+def analise_departamento():
+    '''Função que analisa se os empregado estão em um departamento'''
+    for dados_empregado in lista_empregados:
+        dados_empregado.append('Departamento ausente')
+        for dados_departamento in lista_departamentos:
+            if dados_empregado[0] == dados_departamento[0]:
+                dados_empregado[3] = dados_departamento[1]
+        lista_empregados_atualizada.append(dados_empregado)
+
+def main():
+    if leitor_dados():
+        analise_departamento()
+        with open ('empregadosComDepartamentos.txt', 'w') as file:
+            for i in range(len(lista_empregados_atualizada)):
+                if i < (len(lista_empregados_atualizada) - 1):
+                    file.write(f'{lista_empregados_atualizada[i][0]}, {lista_empregados_atualizada[i][1]}, {lista_empregados_atualizada[i][2]}, {lista_empregados_atualizada[i][3]}\n')
+                else:
+                   file.write(f'{lista_empregados_atualizada[i][0]}, {lista_empregados_atualizada[i][1]}, {lista_empregados_atualizada[i][2]}, {lista_empregados_atualizada[i][3]}') 
+        print('Sucesso! Confira seu arquivo "empregadosComDepartamentos.txt"!')
+
+if __name__ == '__main__':
+    main()
+--------------------------------------------------
+
+Questão 2
+--------------------------------------------------
+lista_funcionarios = []
+lista_salarios = []
+lista_funcionarios_atualizada = []
+
+def criar_arquivo_funcionarios():
+    funcionarios = []
+    try:
+        quantidade = int(input('Quantos funcionários você deseja cadastrar? '))
+    except Exception as erro:
+        print(f'{erro.__class__}')
+    else:
+        if quantidade > 0:
+            for num in range(quantidade):
+                print(f'\nFuncionário número {num + 1}')
+                id = input(f'Qual o id? ')
+                nome = input(f'Qual o nome? ')
+                cargo = input(f'Qual o cargo? ')
+                if id.isdigit() and nome.isalpha() and cargo.isalpha():
+                    funcionarios.append([id, nome, cargo])
+                else:
+                    print('Erro de instanciação!')
+        else:
+            print('Quantidade inválida')
+    with open ('funcionarios.txt', 'w', encoding = 'utf-8') as file:
+        for i in range(len(funcionarios)):
+            if i < (len(funcionarios) - 1):
+                file.write(f'{funcionarios[i][0]}, {funcionarios[i][1]}, {funcionarios[i][2]}\n')
+            else:
+                file.write(f'{funcionarios[i][0]}, {funcionarios[i][1]}, {funcionarios[i][2]}')
+
+def criar_arquivo_salarios():
+    salarios = []
+    try:
+        quantidade = int(input('Quantos salários você deseja cadastrar? '))
+    except Exception as erro:
+        print(f'{erro.__class__}')
+    else:
+        if quantidade > 0:
+            for num in range(quantidade):
+                print(f'\nDado número {num + 1}')
+                id = input(f'Qual o id? ')
+                salario_mes = input(f'Qual o salário mensal? ')
+                bonus = input(f'Qual o bônus? ')
+                if id.isdigit() and salario_mes.isdigit() and bonus.isdigit():
+                    salarios.append([id, salario_mes, bonus])
+                else:
+                    print('Erro de instanciação!')
+        else:
+            print('Quantidade inválida')
+    with open ('salarios.txt', 'w') as file:
+        for i in range(len(salarios)):
+            if i < (len(salarios) - 1):
+                file.write(f'{salarios[i][0]};{salarios[i][1]};{salarios[i][2]}\n')
+            else:
+                file.write(f'{salarios[i][0]};{salarios[i][1]};{salarios[i][2]}')
+
+def leitor_dados():
+    '''Função que lê os arquivos e salva em matrizes'''
+    try:
+        with open ('funcionarios.txt', 'rt') as file:
+            lista_aux = file.read().split('\n')
+            for funcionario in range(len(lista_aux)):
+                lista_funcionarios.append(lista_aux[funcionario].split(', '))
+    except FileNotFoundError:
+        print(f'Arquivo não encontrado! Criando funcionários.txt com valores predefinidos!')
+        funcionarios = [['1', 'Maria', 'Gerente'], ['2', 'João', 'Analista'], ['3', 'Carlos', 'Desenvolvedor'], ['4', 'Ana', 'Designer']]
+        with open ('funcionarios.txt', 'w', encoding = 'utf-8') as file:
+            for i in range(len(funcionarios)):
+                if i < (len(funcionarios) - 1):
+                    file.write(f'{funcionarios[i][0]}, {funcionarios[i][1]}, {funcionarios[i][2]}\n')
+                else:
+                    file.write(f'{funcionarios[i][0]}, {funcionarios[i][1]}, {funcionarios[i][2]}')
+        with open ('funcionarios.txt', 'rt') as file:
+            lista_aux = file.read().split('\n')
+            for funcionario in range(len(lista_aux)):
+                lista_funcionarios.append(lista_aux[funcionario].split(', '))
+    try:            
+        with open ('salarios.txt', 'rt') as file:
+            lista_aux = file.read().split()
+            for salario in range(len(lista_aux)):
+                lista_salarios.append(lista_aux[salario].split(';'))
+    except FileNotFoundError:
+        print(f'Arquivo não encontrado! Criando salários.txt com valores predefinidos!')
+        salarios = [['1', '5000', '10000'], ['2', '4000', '5000'], ['3', '3000', '2000'], ['4', '2500', '3000']]
+        with open ('salarios.txt', 'w') as file:
+            for i in range(len(salarios)):
+                if i < (len(salarios) - 1):
+                    file.write(f'{salarios[i][0]};{salarios[i][1]};{salarios[i][2]}\n')
+                else:
+                    file.write(f'{salarios[i][0]};{salarios[i][1]};{salarios[i][2]}')
+        with open ('salarios.txt', 'rt') as file:
+            lista_aux = file.read().split()
+            for salario in range(len(lista_aux)):
+                lista_salarios.append(lista_aux[salario].split(';'))
+
+def criar_relatório():
+    '''Função que analisa e classifica o salário do funcionário'''
+    for dados_funcionario in lista_funcionarios:
+        for dados_salario in lista_salarios:
+            if dados_funcionario[0] == dados_salario[0]:
+                salario_mensal = float(dados_salario[1])
+                bonus = float(dados_salario[2])
+                salario_anual = (12*salario_mensal) + bonus
+                if 40000 <= salario_anual <= 120000:
+                    dados_funcionario.extend([salario_mensal, bonus, salario_anual, 'Dentro'])
+                else:
+                    dados_funcionario.extend([salario_mensal, bonus, salario_anual, 'Fora'])
+        lista_funcionarios_atualizada.append(dados_funcionario)
+
+def main():
+    while True:
+        print('\n1 - Criar arquivo dos funcionários\n2 - Criar arquivo de salários\n3 - Criar relatório')
+        try:
+            escolha = int(input('Qual função você deseja utilizar? '))
+            if escolha == 1:
+                criar_arquivo_funcionarios()
+            elif escolha == 2:
+                criar_arquivo_salarios()
+            elif escolha == 3:
+                leitor_dados()
+                criar_relatório()
+                with open ('relatorio_funcionarios.txt', 'wt', encoding = 'utf-8') as file:
+                    for i in range(len(lista_funcionarios_atualizada)):
+                        if '£' in lista_funcionarios_atualizada[i][1]: #isso não tem serventia alguma, só fiz porque o unicode tava me estressando
+                            lista_funcionarios_atualizada[i][1] = str.replace(lista_funcionarios_atualizada[i][1].lower(),'£', '')
+                            lista_funcionarios_atualizada[i][1] = lista_funcionarios_atualizada[i][1].replace(lista_funcionarios_atualizada[i][1][0], lista_funcionarios_atualizada[i][1][0].upper())
+                        texto = ''
+                        texto = f'ID: {lista_funcionarios_atualizada[i][0]}, Nome: {lista_funcionarios_atualizada[i][1]}, Cargo: {lista_funcionarios_atualizada[i][2]}, '
+                        texto += f'Salário Mensal: {lista_funcionarios_atualizada[i][3]}, Bônus Anual: {lista_funcionarios_atualizada[i][4]}, '
+                        texto += f'Salário Total Anual: {lista_funcionarios_atualizada[i][5]}, Faixa: {lista_funcionarios_atualizada[i][6]}\n'
+                        if i < (len(lista_funcionarios_atualizada) - 1):
+                            file.write(texto)
+                        else:
+                            file.write(texto[:-1])
+                print('Sucesso! Confira seu arquivo "relatorios_funcionarios.txt"!')
+                break
+            else:
+                print('Funcionalidade inválida!')
+        except Exception as erro:
+            print(f'{erro.__class__}')
+
+if __name__ == '__main__':
+    main()
+--------------------------------------------------
+
+Questão 3
+--------------------------------------------------
+import pickle
+
+class Livro:
+    def __init__ (self, id, titulo, autor, ano, preco):
+        try:
+            self.id = id
+            self.titulo = titulo
+            self.autor = autor
+            if ano.isdigit():
+                self.ano = ano
+            preco = float(preco)
+            if preco > 0:
+                self.preco = preco
+            else:
+                print('Erro ao instanciar o livro')
+                return
+        except:
+            print('Erro ao instanciar o livro')
+    
+    def __str__ (self):
+        return f'------------\nID: {self.id}\nTítulo: {self.titulo}\nAutor: {self.autor}\nAno: {self.ano}\nPreço: R${self.preco:.2f}\n------------'
+
+class Estoque:
+    def __init__(self):
+        self.livros = []
+        self.historico = []
+    
+    def adicionar_livro (self, livro):
+        for livro_add in self.livros:
+            if livro.id == livro_add.id:
+                print(f'\nUm livro com ID {livro.id} já está presente no estoque')
+                return
+        self.livros.append(livro)
+        print(f'\nO livro {livro.titulo} (ID: {livro.id}) foi adicionado ao estoque')
+        self.historico.append(f'O livro {livro.titulo} (ID: {livro.id}) foi adicionado ao estoque')
+        
+    def remover_livro (self, id):
+        tamanho = len(self.livros)
+        for livro in self.livros:
+            if livro.id == id:
+                self.livros.remove(livro)
+                print(f'\nO livro {livro.titulo} (ID: {livro.id}) foi removido do estoque')
+                self.historico.append(f'O livro {livro.titulo} (ID: {livro.id}) foi removido do estoque')
+        if len(self.livros) == tamanho:
+            print(f'\nNão há nenhum livro com ID {id} presente no estoque')
+    
+    def listar_livros (self):
+        print('\n')
+        if len(self.livros) == 0:
+            print('Estoque vazio')
+        else:
+            for livro in self.livros:
+                print(livro.__str__())
+    
+    def salvar_estoque (self, arquivo):
+        if len(self.livros) > 0:
+            with open(arquivo, 'wb') as file:
+                pickle.dump(self.livros, file)
+            with open('historico.pkl', 'wb') as file:
+                pickle.dump(self.historico, file)
+            print(f'{arquivo} salvo com sucesso')
+        else:
+            print('Não foi possível salvar')
+
+    def carregar_estoque (self, arquivo):
+        try:
+            with open(arquivo, 'rb') as file:
+                self.livros = pickle.load(file)
+            with open('historico.pkl', 'rb') as file:
+                self.historico = pickle.load(file)
+        except Exception as erro:
+            print(f'Erro! {erro.__class__}')
+    
+    def pesquisar (self, pesquisa):
+        pesquisa = pesquisa.lower()
+        resultados = []
+        for livro in self.livros:
+            if pesquisa in livro.titulo.lower() or pesquisa in livro.autor.lower():
+                resultados.append(livro.__str__())
+        if len(resultados) == 0:
+            print('\nNenhum livro encontrado')
+        else:
+            print('\nResultado da pesquisa:')
+            for resultado in resultados:
+                print (resultado)
+
+def menu():
+    print("\nMenu:")
+    print("1. Adicionar Livro")
+    print("2. Remover Livro")
+    print("3. Listar Livros")
+    print("4. Salvar Estoque")
+    print("5. Carregar Estoque")
+    print("6. Pesquisar livro por Título ou por Autor")
+    print("7. Sair")
+    return input("Escolha uma opção: ")
+
+def main():
+    estoque = Estoque()
+    while True:
+        opcao = menu()
+        if opcao == '1':
+            id = input("ID do Livro: ")
+            titulo = input("Título do Livro: ")
+            autor = input("Autor do Livro: ")
+            ano = input("Ano de Publicação: ")
+            preco = float(input("Preço do Livro: "))
+            livro = Livro(id, titulo, autor, ano, preco)
+            estoque.adicionar_livro(livro)
+        elif opcao == '2':
+            id = input("ID do Livro a ser removido: ")
+            estoque.remover_livro(id)
+        elif opcao == '3':
+            estoque.listar_livros()
+        elif opcao == '4':
+            nome_arquivo = input("Nome do arquivo para salvar o estoque: ")
+            estoque.salvar_estoque(nome_arquivo)
+        elif opcao == '5':
+            nome_arquivo = input("Nome do arquivo para carregar o estoque: ")
+            estoque.carregar_estoque(nome_arquivo)
+        elif opcao == '6':
+            pesquisa = input("Pesquisar: ")
+            estoque.pesquisar(pesquisa)
+        elif opcao == '7':
+            print("Saindo do programa.")
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
+
+if __name__ == "__main__":
+    main()
+--------------------------------------------------
+
+Questão 4
+--------------------------------------------------
+import pickle
+import abc
+import os
+
+class ContaBancaria (abc.ABC):
+    def __init__ (self, numero : int, saldo : float):
+        self.numero = numero
+        self._saldo = saldo
+    
+    @property
+    def saldo (self):
+        return self._saldo
+    
+    @saldo.setter
+    def saldo (self, valor):
+        self._saldo = valor
+    
+    @abc.abstractmethod
+    def operacao (self, entrada : float):
+        pass
+
+    def __str__ (self):
+        return f'Número: {self.numero} - Saldo: R$ {self.saldo:.2f}'
+
+class ContaCorrente (ContaBancaria):
+    def __init__ (self, numero : int, saldo : float, limite : float):
+        ContaBancaria.__init__ (self, numero, saldo)
+        self.limite = 100
+        if 100 <= limite <= 1000:
+            self.limite = limite
+    
+    def operacao(self, entrada : float):
+        if entrada >= 0: #depósito
+            self.saldo += entrada
+        else: #saque
+            if (entrada + self.saldo) >= 0:
+                self.saldo += entrada
+            elif (entrada + self.saldo) >= (-self.limite):
+                print('Aplicando limite')
+                self.saldo += entrada
+            else:
+                print('Saldo insuficiente')
+    
+    def __str__ (self):
+        return f'{ContaBancaria.__str__(self)}' + f' - Limite Especial: R$ {self.limite:.2f}'
+
+class ContaPoupança (ContaBancaria):
+    def __init__ (self, numero : int, saldo : float, taxa : float):
+        ContaBancaria.__init__(self, numero, saldo)
+        taxa = taxa
+        self.taxa = 0.1
+        if 0.1 <= taxa <= 0.5:
+            self.taxa = taxa
+    
+    def operacao(self, entrada : float):
+        if entrada >= 0: #depósito
+            self.saldo += entrada
+        else: #saque
+            if (entrada + self.saldo) >= 0:
+                self.saldo += entrada
+            else:
+                print('Saldo insuficiente')
+    
+    def aplicar_rendimento (self):
+        self.saldo += (self.saldo*(self.taxa/100))
+    
+    def __str__(self):
+        return f'{ContaBancaria.__str__(self)}' + f' - Taxa de Rendimento: {self.taxa:.2f}%'
+
+class Banco:
+    def __init__(self):
+        self.contas = {}
+    
+    def cadastrar (self, numero, conta):
+        if numero not in self.contas:
+            self.contas[numero] = conta
+            print(f'Conta {numero} cadastrada!')
+        else:
+            print(f'Conta {numero} já cadastrada!')
+    
+    def excluir (self, numero):
+        try:
+            del self.contas[numero]
+            print(f'Conta {numero} excluída!')
+        except:
+            print(f'Conta {numero} não cadastrada')
+    
+    def alterar_dados (self, numero, saldo = None, particularidade = None):
+        if numero in self.contas:
+            conta = self.contas[numero]
+            if saldo:
+                conta.saldo = saldo
+            if particularidade:
+                if isinstance(conta, ContaCorrente):
+                    conta.limite = particularidade
+                if isinstance(conta, ContaPoupança):
+                    conta.taxa = particularidade
+            print(f'Informaçãoes da conta {numero} alteradas')
+        else:
+            print(f'Conta {numero} não cadastrada')
+    
+    def listar (self):
+        if len(self.contas) == 0:
+            print('Nenhuma conta cadastrada no banco')
+        else:
+            for conta in self.contas.values():
+                print(f'{conta.__class__.__name__}: ' + f'{conta.__str__()}')
+    
+    def salvar_dados (self):
+        if len(self.contas) > 0:
+            with open('contas.pkl', 'wb') as file:
+                pickle.dump(self.contas, file)
+            print('Objetos salvos com sucesso em conta.pkl')
+        else:
+            print('Não foi possível salvar')
+    
+    def carregar_dados (self):
+        try:
+            with open ('contas.pkl', 'rb') as file:
+                self.contas = pickle.load(file)
+        except Exception as erro:
+            print(f'{erro.__class__}')
+
+Banco = Banco()
+Banco.carregar_dados()
+
+def menu():
+    print('\nMenu Principal')
+    print(('1. Cadastrar Conta\n2. Listar Contas\n3. Excluir Conta\n4. Alterar Conta\n5. Sair'))
+
+def testar_especial(valor):
+    '''Para permitir que o usuário mantenha uma informação ao alterar dados'''
+    try:
+        valor = float(valor)
+        return valor
+    except:
+        return None
+
+def main():
+    while True:
+        menu()
+        try:
+            escolha = int(input('Escolha uma opção: '))
+            os.system('cls')
+        except:
+            print('Opção inválida! Digite um número inteiro de 1 a 5')
+        else:
+            if escolha == 1:
+                try:
+                    numero = int(input('Digite o número da conta: '))
+                    saldo = float(input('Digite o saldo inicial da conta: '))
+                    tipo_conta = input('A conta é do tipo ContaCorrente ou ContaPoupança? ').lower()
+                    if tipo_conta == 'contacorrente':
+                        limite = float(input('Digite um limite especial de R$100.00 a R$1000.00: '))
+                        conta00 = ContaCorrente(numero, saldo, limite)
+                        Banco.cadastrar(numero, conta00)
+                    elif tipo_conta == 'contapoupança' or tipo_conta == 'contapoupanca':
+                        taxa = float(input('Digite uma taxa de rendimento de 0.1 a 0.5: '))
+                        conta00 = ContaPoupança(numero, saldo, taxa)
+                        Banco.cadastrar(numero, conta00)
+                    else:
+                        print('Opção de tipo de conta inválida')
+                except Exception as erro:
+                    print(f'Erro! {erro.__class__}')
+            elif escolha == 2:
+                Banco.listar()
+            elif escolha == 3:
+                try:
+                    numero = int(input('Digite o número da conta a ser excluída do cadastro: '))
+                    Banco.excluir(numero)
+                except Exception as erro:
+                    print(f'Erro! {erro.__class__}')
+            elif escolha == 4:
+                try:
+                    numero = int(input('Digite o número da conta a ser alterada: '))
+                except Exception as erro:
+                    print(f'Erro! {erro.__class__}')
+                else:
+                    saldo = input('Digite o novo saldo conta (aperte Enter para manter): ')
+                    saldo = testar_especial(saldo)
+                    tipo_conta = input('A conta é do tipo ContaCorrente ou ContaPoupança? ').lower()
+                    if tipo_conta == 'contacorrente':
+                        particularidade = input('Digite o novo limite especial de R$100.00 a R$1000.00 (aperte Enter para manter): ')
+                        particularidade = testar_especial(particularidade)
+                        Banco.alterar_dados(numero, saldo, particularidade)
+                    elif tipo_conta == 'contapoupança' or tipo_conta == 'contapoupanca':
+                        particularidade = input('Digite o novo taxa de rendimento de 0.1 a 0.5 (aperte Enter para manter): ')
+                        particularidade = testar_especial(particularidade)
+                        Banco.alterar_dados(numero, saldo, particularidade)
+                    else:
+                        print('Opção de tipo de conta inválida')
+            elif escolha == 5:
+                Banco.salvar_dados()
+                break
+            else:
+                print('Opção inválida! Digite um número inteiro de 1 a 5')
+
+if __name__ == '__main__':
+    main()
+--------------------------------------------------
+
+Questão 5
+--------------------------------------------------
+ignorar = ['.', ',', '!', ':', ':', '?', '/', '-', '"', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+palavras = {}
+três_ocorrências = {}
+
+def leitor_redacao(arquivo):
+    '''Função que cria que trata o texto do arquivo e cria um dicionário com suas palavras'''
+    texto_base = ''
+    try:
+        with open(arquivo, 'rt', encoding = 'utf-8') as file:
+            lista_redação = file.read().split('\n')
+    except Exception as erro:
+        print(f'{erro.__class__}')
+        return False
+    else:
+        for linha in lista_redação:
+            linha = linha.lower()
+            for element in ignorar:
+                linha = linha.replace(element, '')
+            for palavra in linha.split():
+                if len(palavra) > 1: 
+                    texto_base += palavra + ' '
+                    if palavra not in palavras:
+                        palavras[palavra] = 0
+        return texto_base
+
+def contador_palavras(texto_tratado):
+    '''Função que conta a quantidade de repetições'''
+    quantidades = []
+    for palavra in palavras.keys():
+        palavras[palavra] = texto_tratado.split().count(palavra)
+    for valor in palavras.values():
+        quantidades.append(valor)
+    quantidades.sort()
+    quantidades = quantidades[::-1]
+    return (quantidades)
+
+def classificador_ocorrencias(quantidades):
+    '''Função que classifica as 3 palavras que mais ocorreram no texto'''
+    for i in range(0, 3):
+        for palavra in palavras.keys():
+            if palavras[palavra] == quantidades[i]:
+                três_ocorrências[palavra] = quantidades[i]
+            if len(três_ocorrências.keys()) == 3:
+                break
+
+def main():
+    try:
+        arquivo = input('Digite o nome do arquivo a ser analisado (Ex: redação.txt): ')
+        texto_tratado = leitor_redacao(arquivo)
+        if texto_tratado:
+            quantidades = contador_palavras(texto_tratado)
+            classificador_ocorrencias(quantidades)
+            with open('três_ocorrências.txt', 'w', encoding = 'utf-8') as file:
+                lista_palavras = []
+                for palavra in três_ocorrências.keys():
+                    lista_palavras.append(palavra)
+                for i in range(len(lista_palavras)):
+                    if i < ((len(lista_palavras)) - 1):
+                        file.write(f'{lista_palavras[i]}: {três_ocorrências[lista_palavras[i]]}\n')
+                    else:
+                        file.write(f'{lista_palavras[i]}: {três_ocorrências[lista_palavras[i]]}')
+            print('Sucesso! Confira seu arquivo "três_ocorrências.txt"!')
+    except Exception as erro:
+        print(f'{erro.__class__}')
+
+if __name__ == '__main__':
+    main()
+--------------------------------------------------
