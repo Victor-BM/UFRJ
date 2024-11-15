@@ -1,0 +1,81 @@
+Considere a seguinte situação: você está desenvolvendo um sistema simples de gerenciamento de animais para um abrigo. Cada animal pode ser do tipo "Cachorro" ou "Gato". Cada animal tem um nome, idade, e a capacidade de fazer um som característico. Cachorro tem raça e gato tem cor.
+
+Implemente um sistema em Python utilizando classes, herança, e persistência de dados com Pickle para atender a essa necessidade.
+
+Crie uma classe abstrata chamada Animal. Esta classe deve ter um método abstrato chamado fazer_som() e atributos comuns a todos os animais, como nome e idade.
+
+Implemente duas classes, Cachorro e Gato, que herdam da classe Animal. Cada uma dessas classes deve implementar o método fazer_som() de acordo com as características do animal.
+
+Desenvolva funções para cadastrar, listar, excluir e alterar animais. Essas funções devem interagir com o usuário para coletar informações necessárias e persistir os dados em um arquivo usando Pickle.
+
+Crie um menu principal que permita ao usuário realizar as seguintes operações:
+Cadastrar um novo animal (informando se é um cachorro ou gato).
+Listar todos os animais cadastrados.
+Excluir um animal pelo nome.
+Alterar informações de um animal pelo nome.
+Sair do programa.
+
+Certifique-se de tratar possíveis erros, como a tentativa de excluir ou alterar um animal que não existe.
+
+Utilize a modularização do código, separando a lógica de persistência em funções específicas.
+
+As informações dos animais devem ser persistidas em um arquivo utilizando o módulo Pickle.
+
+Ao cadastrar um novo animal, permita ao usuário escolher se é um cachorro ou gato, e colete as informações específicas para cada tipo.
+
+Exemplos:
+ Menu Principal 
+1. Cadastrar Animal
+2. Listar Animais
+3. Excluir Animal
+4. Alterar Animal
+5. Sair
+Escolha uma opção:
+
+<ao escolher a opção 2>
+Cachorro: Totó - Idade: 5 - Som: Au Au!
+Gato: Zeca - Idade: 3 - Som: Miau!
+Cachorro: Rick - Idade: 8 - Som: Au Au!
+
+<ao escolher a opção 1>
+Digite o nome do animal: <usuário digita>
+Digite a idade do animal: <usuário digita>
+O animal é um cachorro ou gato? <permite apenas essas duas opções, cuidado com letras maiúsculas e minúsculas>
+Digite a raça do cachorro: <usuário digita>
+Objetos salvos com sucesso em animais.pkl
+
+
+
+Você foi encarregado de criar um programa em Python para combinar dados de dois arquivos, arquivo1.txt e arquivo2.txt. Cada arquivo contém uma lista de números separados por vírgulas. Seu objetivo é ler o conteúdo desses arquivos, combinar os números das duas listas em uma única lista, classificá-los em ordem crescente e criar um terceiro arquivo cujo nome é a concatenação dos nomes dos arquivos originais, como "arquivo1arquivo2.txt". 
+
+Crie um programa que leia o conteúdo dos arquivos arquivo1.txt e arquivo2.txt. Verifique se ambos os arquivos existem.
+
+Leia o conteúdo dos dois arquivos e separe os números de cada arquivo.
+
+Combine as listas de números em uma única lista.
+
+Percorra cada elemento nas listas de números e verifique se é um número (int ou float). Se for um número, adicione-o à lista combinada.
+
+Ordene a lista de números combinados em ordem crescente.
+
+Crie um terceiro arquivo cujo nome é a concatenação dos nomes dos arquivos originais (por exemplo, "arquivo1arquivo2.txt").
+
+Escreva os números combinados e ordenados no terceiro arquivo.
+
+Exiba na tela o resultado final da combinação.
+
+Os arquivos arquivo1.txt e arquivo2.txt contêm números separados por vírgulas.
+Os números podem incluir inteiros e números de ponto flutuante.
+Os nomes dos arquivos de entrada, arquivo1.txt e arquivo2.txt, não devem ser alterados.
+O resultado final pode ser com todos os números ordenados como seus tipos originais ou como pontos flutuantes
+
+Exemplo de Conteúdo de Arquivos:
+Conteúdo de arquivo1.txt:
+1, 2.5, 3, 4.7
+
+Conteúdo de arquivo2.txt:
+5.3, 6, 7, 8
+
+Exemplo de Resultado Esperado:
+Conteúdo de arquivo1arquivo2.txt:
+1, 2.5, 3, 4.7, 5.3, 6, 7, 8
