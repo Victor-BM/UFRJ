@@ -8,7 +8,7 @@
     
     Como executar: Com o python 3.11+, abra a pasta ContatinhosApp no VSCode e execute o contatinhosApp.py
 
-### **Computação 2 -> Trabalho Final - Carteira do Tourinho**
+### **Computação 2 -> [Trabalho Final - Carteira do Tourinho](https://github.com/Victor-BM/UFRJ/blob/main/Computação%20II/Trabalho%20Final%20-%20Carteira%20do%20Tourinho/Trabalho%20Final%20-%20Carteira%20do%20Tourinho.zip)**
     Tema: Trabalho final na matéria de Computação 2 sobre um simulador de investimentos educativo e capaz de prever o valor do investimento no dia seguinte
     O código de previsão de valores utilizando RNN's é uma adaptação do código desenvolvido por NeuralNine
     
