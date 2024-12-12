@@ -6,15 +6,16 @@
     
     Tópicos: modularização, manipulação de matrizes, strings, biblioteca os e outros recursos básicos na computação
     
-    Como executar: Abra a pasta ContatinhosApp no VSCode e execute o contatinhosApp.py
+    Como executar: Com o python 3.11+, abra a pasta ContatinhosApp no VSCode e execute o contatinhosApp.py
 
 ### **Computação 2 -> Trabalho Final - Carteira do Tourinho**
     Tema: Trabalho final na matéria de Computação 2 sobre um simulador de investimentos educativo e capaz de prever o valor do investimento no dia seguinte
+    O código de previsão de valores utilizando RNN's é uma adaptação do código desenvolvido por NeuralNine
     
     Tópicos: POO, abstração, encapsulamento, herança, classe abstrata, persistência de dados, tratamento de dados, 
     interface gráfica (PyQT6), bibliotecas básicas (Numpy e Matplot.pyplot), API (yfinance), RNN (tensorflow),
     bibliotecas especiais (scikit, datetime, pandas)
     
-    Como executar: Abra a pasta Trabalho Final - Carteira do Tourinho no VSCode e execute main.py 
+    Como executar: Com o python 3.11.9+, abra a pasta Trabalho Final - Carteira do Tourinho no VSCode e execute main.py 
     (Há 3 arquivos de dados disponíveis para testes, mas só o dados.pkl é acessado, caso queira acessar os outros, renomeie-os como
     'dados.pkl'. Ao criar um novo perfil, ele será sobrescrito em 'dados.pkl')
