@@ -9,9 +9,27 @@
     Como executar: Com o python 3.11+, abra a pasta ContatinhosApp no VSCode e execute o contatinhosApp.py
 
 ### **Computação 2:**
-### *[Trabalho sobre Heranças - RPG](https://github.com/Victor-BM/UFRJ/tree/main/Computação%20II/Trabalho%20do%20Jogo%20-%20Herança)*
-### *[Trabalho sobre Classe Abstrata/Sistema Especializado - Usina](https://github.com/Victor-BM/UFRJ/tree/main/Computação%20II/Trabalho%20do%20Sistema%20Especializado)*
+### *[Trabalho sobre Heranças - RPG]([https://github.com/Victor-BM/UFRJ/tree/main/Computação%20II/Trabalho%20do%20Jogo%20-%20Herança](https://github.com/Victor-BM/UFRJ/blob/main/Computação%20II/Trabalho%20do%20Jogo%20-%20Herança/Engenheiro%20do%20Fim%20do%20Mundo.zip))*
+    Tema: Trabalho sobre desenvolver um RPG de texto. Esse RPG é relacionado com Engenharia Nuclear
+    e mistura conceitos de Fallout e Disco Elysium
+    
+    Tópicos: POO, heranças,
+    
+    Como executar: Com uma pasta contendo os 3 arquivos de código, abra-a no VSCode com o python 3.11.3+ e execute Engenheiro do Fim do Mundo.py 
+### *[Trabalho sobre Classe Abstrata/Sistema Especializado - Usina]([https://github.com/Victor-BM/UFRJ/tree/main/Computação%20II/Trabalho%20do%20Sistema%20Especializado](https://github.com/Victor-BM/UFRJ/blob/main/Computação%20II/Trabalho%20do%20Sistema%20Especializado/Usina.py))*
+    Tema: Trabalho sobre desenvolver um sistema especializado de forma conceitual.
+    O escolhido foi um simulador de gestão de uma Usina de Fissão Nuclear
+    
+    Tópicos: POO, abstração, herança, classe abstrata
+    
+    Como executar: Com o python 3.11.3+, abra no VSCode e exexute Usina.py
 ### *[Trabalho sobre Persistência de Dados - Professor Peichim](https://github.com/Victor-BM/UFRJ/tree/main/Computação%20II/Trabalho%20Professor%20Peichim%20-%20Persistência%20de%20Dados)*
+    Tema: Trabalho sobre manipulação de dados, persistência de dados e tratamento de dados
+    
+    Tópicos: POO, abstração, encapsulamento, herança, classe abstrata, persistência de dados, tratamento de dados, 
+    pickle
+    
+    Como executar: Com uma pasta contendo todos os arquivos de código, abra-a no VSCode com o python 3.11.3+ e execute cada questão conforme queira
 ### **[Trabalho Final - Carteira do Tourinho](https://github.com/Victor-BM/UFRJ/blob/main/Computação%20II/Trabalho%20Final%20-%20Carteira%20do%20Tourinho/Trabalho%20Final%20-%20Carteira%20do%20Tourinho.zip)**
     Tema: Trabalho final na matéria de Computação 2 sobre um simulador de investimentos educativo e capaz de prever o valor do investimento no dia seguinte
     O código de previsão de valores utilizando RNN's é uma adaptação do código desenvolvido por NeuralNine
