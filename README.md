@@ -8,11 +8,11 @@
     
     Como executar: Com o python 3.11+, abra a pasta ContatinhosApp no VSCode e execute o contatinhosApp.py
 
-### **Computação 2:
+### ** Computação 2:
 ### [Trabalho sobre Heranças - RPG](https://github.com/Victor-BM/UFRJ/tree/main/Computação%20II/Trabalho%20do%20Jogo%20-%20Herança)
 ### [Trabalho sobre Classe Abstrata/Sistema Especializado - Usina](https://github.com/Victor-BM/UFRJ/tree/main/Computação%20II/Trabalho%20do%20Sistema%20Especializado)
 ### [Trabalho sobre Persistência de Dados - Professor Peichim](https://github.com/Victor-BM/UFRJ/tree/main/Computação%20II/Trabalho%20Professor%20Peichim%20-%20Persistência%20de%20Dados)
-### [Trabalho Final - Carteira do Tourinho](https://github.com/Victor-BM/UFRJ/blob/main/Computação%20II/Trabalho%20Final%20-%20Carteira%20do%20Tourinho/Trabalho%20Final%20-%20Carteira%20do%20Tourinho.zip)**
+### [Trabalho Final - Carteira do Tourinho](https://github.com/Victor-BM/UFRJ/blob/main/Computação%20II/Trabalho%20Final%20-%20Carteira%20do%20Tourinho/Trabalho%20Final%20-%20Carteira%20do%20Tourinho.zip) **
     Tema: Trabalho final na matéria de Computação 2 sobre um simulador de investimentos educativo e capaz de prever o valor do investimento no dia seguinte
     O código de previsão de valores utilizando RNN's é uma adaptação do código desenvolvido por NeuralNine
     
