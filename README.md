@@ -9,7 +9,7 @@
     Como executar: Com o python 3.11+, abra a pasta ContatinhosApp no VSCode e execute o contatinhosApp.py
 
 ### **Computação 2:**
-### *[Trabalho sobre Heranças - RPG](https://github.com/VictorBM/UFRJ/blob/main/Computação%20II/Trabalho%20do%20Jogo%20-%20Herança/Engenheiro%20do%20Fim%20do%20Mundo.zip)*
+### *[Trabalho sobre Heranças - RPG](https://github.com/Victor-BM/UFRJ/blob/main/Computação%20II/Trabalho%20do%20Jogo%20-%20Herança/Engenheiro%20do%20Fim%20do%20Mundo.zip)*
     Tema: Trabalho sobre desenvolver um RPG de texto. Esse RPG é relacionado com Engenharia Nuclear
     e mistura conceitos de Fallout e Disco Elysium
     
