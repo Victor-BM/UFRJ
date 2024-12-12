@@ -1,4 +1,4 @@
-# Repositório sobre conteúdos das matérias que envolvem programação na UFRJ
+# Repositório sobre conteúdos de programação na UFRJ
 
 ## Destaques:
 ### **Computação 1 -> [ContatinhosApp](https://github.com/Victor-BM/UFRJ/blob/main/Computação%20I/Atividades/Trabalho%20Final%20-%20ContatinhosApp/Trabalho%20Final%20-%20ContatinhosApp.zip)**
