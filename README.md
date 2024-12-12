@@ -19,3 +19,5 @@
     Como executar: Com o python 3.11.9+, abra a pasta Trabalho Final - Carteira do Tourinho no VSCode e execute main.py 
     (Há 3 arquivos de dados disponíveis para testes, mas só o dados.pkl é acessado, caso queira acessar os outros, renomeie-os como
     'dados.pkl'. Ao criar um novo perfil, ele será sobrescrito em 'dados.pkl')
+
+## [Extras](https://drive.google.com/drive/folders/1xh5CDXgLcVcwL6_nm6yiPncu-2F-EJzU?usp=sharing)
