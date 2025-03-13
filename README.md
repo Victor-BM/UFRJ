@@ -31,6 +31,7 @@
     
     Como executar: Com uma pasta contendo todos os arquivos de código, abra-a no VSCode com o python 3.11.3+ e execute cada questão conforme queira
 ### **[Trabalho Final - Carteira do Tourinho (03/2025)](https://github.com/Victor-BM/UFRJ/blob/main/Computação%20II/Trabalho%20Final%20-%20Carteira%20do%20Tourinho/Trabalho%20Final%20-%20Carteira%20do%20Tourinho%20-%2003_2025.zip)**
+---------------------------------------------------------------------------------------------------------
 ### **[~~Versão Antiga (12/2025)~~](https://github.com/Victor-BM/UFRJ/blob/main/Computação%20II/Trabalho%20Final%20-%20Carteira%20do%20Tourinho/Trabalho%20Final%20-%20Carteira%20do%20Tourinho%20-%2012_2024.zip)**
     Tema: Trabalho final na matéria de Computação 2 sobre um simulador de investimentos educativo e capaz de prever o valor do investimento no dia seguinte
     O código de previsão de valores utilizando RNN's é uma adaptação do código desenvolvido por NeuralNine
