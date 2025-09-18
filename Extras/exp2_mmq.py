@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# Dados: (cor, lambda (nm), Dmin em graus)
+# Dados: (cor, lambda (Å), Dmin em graus)
 data = [
     ("Amarelo 1", 5791, 50 + 12.5/60),
     ("Amarelo 2", 5770, 50 + 12.5/60),
@@ -53,8 +53,8 @@ fit_line = b*inv_lambda2 + a
 # --- Tabela ---
 df = pd.DataFrame({
     'Cor': cores,
-    "λ (nm)": lambdas_tabela,
-    "λ^-2 (1/nm²)": inv_lambda_tabela,
+    "λ (Å)": lambdas_tabela,
+    "λ^-2 (1/Å²)": inv_lambda_tabela,
     "n(λ)": n_tabela,
     "δ_n(λ)": '0.8e-04'
 })
@@ -76,7 +76,7 @@ plt.errorbar(inv_lambda2, n_vals, yerr=erro_n, fmt='o', color="red", label="Dado
 plt.plot(inv_lambda2, fit_line, color="blue", label=f"Ajuste linear: n = {b:.2e} λ⁻² + {a:.3f}")
 
 # Rótulos dos eixos
-plt.xlabel("λ⁻² (1/nm²)")
+plt.xlabel("λ⁻² (1/Å²)")
 plt.ylabel("n(λ)")
 
 plt.title("Ajuste linear de n(λ) em função de λ⁻²")
