@@ -17,7 +17,7 @@ def malus ():
     a, b = popt
     da, db = np.sqrt(np.diag(pcov))
 
-    print(f"I1_máx = {a:.2e} ± {da:.2e}")
+    print(f"Coeficiente Angular = {a:.2e} ± {da:.2e}")
     print(f"Interseção = {b:.2e} ± {db:.2e}")
 
     # Plot
@@ -40,3 +40,4 @@ def malus ():
 
 
 malus()
+
