@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 
-def malus ():
+def comprimento_onda ():
     # Dados da tabela (positivos e negativos)
     x = np.array([5, 10, 15, 20, 25, 30, 35, 40, 45, 50])      # N
     y = np.array([3, 5.5, 8, 11, 14, 16.5, 19.5, 22.5, 25, 28])       # Δl
@@ -42,4 +42,5 @@ def malus ():
 
 
 
-malus()
+comprimento_onda()
+
